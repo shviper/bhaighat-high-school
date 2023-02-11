@@ -1,0 +1,282 @@
+body {
+  background-color: bisque !important;
+  font-family: Lohit Assamese;
+}
+.fth {
+  font-family: "bangla";
+  font-size: 16pt;
+  font-weight: bold;
+  background-color: burlywood;
+  padding: 6pt;
+  overflow: hidden;
+}
+.pd-4 {
+  padding: 4px;
+}
+
+.container.content_wrap {
+  background-color: white;
+}
+.fnt-16 {
+  font-size: 14pt;
+}
+/*Global*/
+
+/*Nav*/
+.navbar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.bg-lightcc {
+  background-color: #d2d2d2 !important;
+}
+.nav-item:hover {
+  background-color: blue;
+}
+.navbar-expand-lg .navbar-collapse {
+  background-color: #d2d2d2 !important;
+}
+.navbar-light .navbar-nav .nav-link:hover {
+  color: cornsilk !important;
+}
+.navbar-light .navbar-nav .nav-link {
+  font-family: bangla;
+  color: rgb(0, 0, 0) !important;
+  font-size: 13pt;
+}
+.dropdown-item {
+  font-family: bangla;
+}
+.menusection {
+}
+/*Nav*/
+
+/*News Ticker*/
+
+.mar {
+  background: rgb(226, 14, 14);
+  height: 31px;
+}
+.mar marquee a {
+  color: white;
+  font-family: "bangla";
+  font-size: 13pt;
+  text-decoration: none;
+}
+/*News TickerEnd*/
+
+/*Slider Start*/
+.headersidebar {
+  font-family: "bangla";
+}
+.headersidebar h1 {
+  font-family: "bangla";
+  font-size: 17pt;
+  background-color: #075061;
+  padding: 9px 0px 9px 5px;
+  color: white;
+}
+
+.headersidebar p {
+  font-family: "bangla";
+  font-size: 13pt;
+  text-align: justify;
+  color: black;
+}
+/*Slider End*/
+
+/*Notice Start*/
+.notice {
+  font-size: 13pt;
+  font-family: "bangla";
+  display: flow-root;
+}
+.ntcmore {
+  float: right;
+}
+.notice ul {
+}
+.notice ul li {
+  list-style: none;
+}
+.notice ul li a {
+  font-size: 13pt;
+  text-decoration: none;
+  color: black;
+}
+/*Notice End*/
+
+/*Block*/
+.bicn {
+}
+.bicn i {
+  font-size: 55pt;
+  float: left;
+  padding: 11px 26px 28px 0px;
+}
+.card-body {
+  background-color: #f5f5f5 !important;
+}
+.card-text {
+}
+.card-text ul {
+}
+.card-text ul li {
+  list-style: none;
+}
+.card-text ul li a {
+  font-family: bangla;
+  font-size: 13pt;
+  color: black;
+  text-decoration: none;
+}
+.card-title {
+  font-family: bangla;
+  font-size: 16pt;
+  color: black;
+}
+
+/*Block*/
+
+/*Blog*/
+
+.blog_img {
+}
+.blog_img img {
+  width: 100%;
+  height: auto;
+}
+.blog_title {
+  font-family: bangla;
+  font-size: 13pt;
+  color: black;
+  border-left: 5px solid black;
+  padding: 0px 0px 0px 8px;
+  margin: 8px 0px 8px 0px;
+  background: #dedede;
+}
+.blog_title a {
+  text-decoration: none;
+  color: black;
+}
+.blog_content {
+  font-family: bangla;
+  font-size: 11pt;
+  color: black;
+  text-align: justify;
+}
+/*Blog*/
+
+/*important link*/
+.important_link {
+}
+.important_link ul {
+  padding: 0;
+}
+.important_link ul li {
+  list-style: none;
+}
+.important_link ul li a {
+  text-decoration: none;
+  color: black;
+  font-size: 13pt;
+}
+/*important link End*/
+
+/*Single Blog*/
+h1.sblog_title {
+  font-family: "bangla";
+  font-size: 17pt;
+  font-weight: bold;
+  border-left: 7px solid black;
+  padding: 0px 0px 0px 9px;
+  margin: 18px 0px 18px 0px;
+}
+.authobox {
+  margin: 0px 0px 18px 0px;
+}
+.sblogcontent {
+  font-size: 13pt;
+  font-family: "bangla";
+  text-align: justify;
+}
+/*Single Blog*/
+
+/*page */
+.table {
+  font-family: "bangla";
+}
+/*page */
+
+/*footer*/
+section.footer_wrap {
+  background-color: rgb(25, 26, 25);
+  padding: 22px 0px 0px 0px;
+}
+.copyrighttext {
+}
+
+.social_wrap ul li {
+  list-style: none;
+  float: left;
+  margin: 0px 1px 0px 6px;
+}
+
+.social_wrap ul li a i {
+  padding: 9px;
+  background-color: #0b5356;
+  border-radius: 21px;
+  color: white;
+}
+.social_wrap ul li a i:hover {
+  background-color: yellow;
+}
+.developedby {
+}
+
+.developedby p a {
+  color: blanchedalmond;
+  text-decoration: none;
+}
+/*footer*/
+
+/*Announcment Start*/
+.announingthumb {
+  width: fit-content;
+  height: auto;
+  padding: 20px 0px 20px 0px;
+}
+.annoucmenttitle {
+  font-weight: bold;
+  border-left: 7px solid black;
+  background: #04040426;
+}
+.announmentsignals {
+  background-color: white;
+}
+
+.infosingpageraw {
+  background-color: white;
+  padding: 16px;
+}
+a.page-numbers {
+  text-decoration: none;
+  padding: 2px;
+}
+.pdvcdse {
+  margin-bottom: 29px;
+}
+.pgtdn {
+  text-decoration: none;
+  color: black;
+}
+.pgtdn p {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
