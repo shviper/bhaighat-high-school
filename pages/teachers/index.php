@@ -63,22 +63,25 @@ include("../../config/database.php");
                         ?>
                                 <div class="col-lg-4 col-md-4 col-sm-12 mt-3">
                                     <div class="card" style="width: 100%;">
-                                        <div class="card-body">
-                                            <div class="well well-white mini-profile-widget">
+                                        <div class="card-body" style="height: 549px;">
+                                            <div class=" well well-white mini-profile-widget">
                                                 <div class="image-container">
-                                                    <img src="<?php echo $row['Picture'] ?>" width="100%" alt="avatar" class="avatar img-responsive">
+                                                    <img src="../../img/teacher/<?php echo $row['Picture'] ?>" width="100%" alt="avatar" class="avatar img-responsive">
                                                 </div>
                                                 <div class="details">
-                                                    <h5><?php echo $row['Name'] ?></h5>
+                                                    <center>
+                                                        <h5 style="font-weight: bolder; padding:3px"><?php echo $row['Name'] ?></h5>
+                                                    </center>
                                                     <hr>
                                                     <div>
-                                                        পদবী : <?php echo $row['Designation'] ?>
+                                                        <b> পদবী </b>: <?php echo $row['Designation'] ?>
 
                                                     </div>
-                                                    <div>শিক্ষাগত যোগ্যতা : <?php echo $row['Educational_Qualifications'] ?></div>
-                                                    <div>ঠিকানা : <?php echo $row['Address'] ?></div>
-                                                    <div>মোবাইল : <?php echo $row['Mobile_Number'] ?></div>
-                                                    <div>ইমেইল : <a href="mailto:<?php echo $row['Email'] ?>"><?php echo $row['Email'] ?></a>
+                                                    <div><b>শিক্ষাগত যোগ্যতা </b> : <?php echo $row['Educational_Qualifications'] ?></div>
+                                                    <div><b>ঠিকানা </b>: <?php echo $row['Address'] ?></div>
+                                                    <div><b>মোবাইল </b>: <?php echo $row['Mobile_Number'] ?></div>
+                                                    <div><b>যোগদানের তারিখ </b>: <?php echo $row['join_date'] ?></div>
+                                                    <div><b>ইমেইল </b>: <a href="mailto:<?php echo $row['Email'] ?>"><?php echo $row['Email'] ?></a>
                                                     </div>
                                                 </div>
                                             </div>

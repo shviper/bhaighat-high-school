@@ -149,7 +149,7 @@ include '../config/database.php';
                   </svg>
                 </div>
                 <div>
-                  <h2 class="text-white invoice-num">983</h2>
+                  <h2 class="text-white invoice-num" id="teacher_total"></h2>
                   <span class="text-white fs-18">Total Teachers</span>
                 </div>
               </div>
@@ -323,6 +323,7 @@ include '../config/database.php';
           $("#notice_show").load("./data_load/notics.php");
           $("#notice_preview").load("./data_load/notice_hading.php");
           $("#visits").load("./data_load/visits.php");
+          $("#teacher_total").load("./data_load/teacher.php");
         }, 3000);
       });
     </script>
@@ -336,14 +337,7 @@ include '../config/database.php';
     <!--**********************************
             Footer start
         ***********************************-->
-    <div class="footer">
-      <div class="copyright">
-        <p>
-          © Designed &amp; by
-          <a href="#" target="_blank">Sajjad Hasan Riyad</a> 2022
-        </p>
-      </div>
-    </div>
+    <?php include './components/footer.php'; ?>?>
     <!--**********************************
             Footer end
         ***********************************-->

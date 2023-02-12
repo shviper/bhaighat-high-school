@@ -176,14 +176,7 @@ if (isset($_POST['submit'])) {
             });
         </script> -->
 
-        <script>
-            $(document).ready(function() {
-                setInterval(function() {
-                    $("#notice_show").load("../data_load/notics.php");
-                    $("#visits").load("../data_load/visits.php");
-                }, 3000);
-            });
-        </script>
+
 
 
 
@@ -194,14 +187,7 @@ if (isset($_POST['submit'])) {
         <!--**********************************
             Footer start
         ***********************************-->
-        <div class="footer">
-            <div class="copyright">
-                <p>
-                    © Designed &amp; by
-                    <a href="https://web.facebook.com/shviper" target="_blank">Sajjad Hasan Riyad</a> 2023
-                </p>
-            </div>
-        </div>
+        <?php include '../components/footer.php'; ?>
         <!--**********************************
             Footer end
         ***********************************-->
