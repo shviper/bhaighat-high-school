@@ -4,19 +4,17 @@ include '../../../config/database.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_GET['id'];
-    $Name = $_POST['Name'];
-    $Designation = $_POST['Designation'];
-    $Educational_Qualifications = $_POST['Educational_Qualifications'];
-    $Address = $_POST['Address'];
-    $Mobile_Number = $_POST['Mobile_Number'];
-    $Email = $_POST['Email'];
-    $join_date = $_POST['join_date'];
+    $class = $_POST['class'];
+    $male = $_POST['male'];
+    $female = $_POST['female'];
+    $sceince = $_POST['sceince'];
+    $humane = $_POST['humane'];
 
-    $sql = "UPDATE teacher SET Name = '$Name', Designation = '$Designation', Educational_Qualifications = '$Educational_Qualifications', Mobile_Number = '$Mobile_Number', Email = '$Email', join_date = '$join_date' WHERE Id = $id";
+    $sql = "UPDATE student SET class = '$class', male = '$male', female = '$female', sceince = '$sceince', humane = '$humane' WHERE Id = $id";
 
 
     if (mysqli_query($conn, $sql)) {
-        echo "<script>alert('Teacher Data update successfully')</script>";
+        echo "<script>alert('Student Data updated successfully')</script>";
     } else {
         echo "script>alert('fail!Some thing is wrong !')</script>";
     }
@@ -118,39 +116,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                         <?php
                                         $id = $_GET['id'];
                                         $id = mysqli_real_escape_string($conn, $id);
-                                        $sql = "SELECT * FROM teacher WHERE Id=$id";
-                                        $teacher = mysqli_query($conn, $sql);
-                                        mysqli_num_rows($teacher);
-                                        $row = mysqli_fetch_assoc($teacher);
+                                        $sql = "SELECT * FROM student WHERE Id=$id";
+                                        $student = mysqli_query($conn, $sql);
+                                        mysqli_num_rows($student);
+                                        $row = mysqli_fetch_assoc($student);
                                         ?>
                                         <div class="contact-left">
                                             <center>
-                                                <h1>Teacher Add</h1>
+                                                <h1>Student</h1>
                                             </center>
-                                            <form class="contact-form" action="<?php echo $_SERVER['PHP_SELF'] . '?id=' . $row["Id"] ?>" method="post">
-                                                <div class="single-row">
+                                            <form class="contact-form" action="<?php echo $_SERVER['PHP_SELF'] . '?id=' . $row['id'] ?>" method="post">
 
-                                                    <input type="text" name="Name" value="<?php echo $row['Name'] ?>" placeholder="Enter teacher Name" class="form-in" required>
-                                                    <input type="text" name="Designation" value="<?php echo $row['Designation'] ?>" placeholder="Designation" class="form-in" required>
+                                                <div class="">
+                                                    <center>
+                                                        <b><label for="">শ্রেণী</label></b>
+                                                    </center>
+
+                                                    <select name="class" class="form-in" required>
+
+                                                        <option value="<?php echo $row['class'] ?>"><?php echo $row['class'] ?></option>
+                                                        <option value="ষষ্ঠ শ্রেণী">ষষ্ঠ শ্রেণী</option>
+                                                        <option value="সপ্তম শ্রেণী">সপ্তম শ্রেণী</option>
+                                                        <option value="অষ্টম শ্রেণী">অষ্টম শ্রেণী</option>
+                                                        <option value="নবম শ্রেণী">নবম শ্রেণী</option>
+                                                        <option value="দশম শ্রেণী">দশম শ্রেণী</option>
+                                                    </select>
+
+
                                                 </div>
                                                 <div class="single-row">
-
-                                                    <input type="text" name="Educational_Qualifications" value="<?php echo $row['Educational_Qualifications'] ?>" placeholder="Educational Qualifications" class="form-in" required>
-                                                    <input type="text" name="Mobile_Number" value="<?php echo $row['Mobile_Number'] ?>" placeholder="019000000" class="form-in" required>
+                                                    <b><label for="">ছাত্র সংখ্যা</label></b>
+                                                    <input type="number" value="<?php echo $row['male'] ?>" name="male" placeholder="100" class="form-in" required>
+                                                    <b><label for="">ছাত্রী সংখ্যা</label></b>
+                                                    <input type="number" value="<?php echo $row['female'] ?>" name="female" placeholder="100" class="form-in" required>
                                                 </div>
+
                                                 <div class="single-row">
-
-                                                    <input type="Email" name="Email" value="<?php echo $row['Email'] ?>" placeholder="example@email.com" class="form-in" required style="text-transform: lowercase;">
-                                                    <input type="date" name="join_date" class="form-in" value="<?php echo $row['join_date'] ?>" required>
+                                                    <b><label for="">বিজ্ঞান বিভাগ</label></b>
+                                                    <input type="number" value="<?php echo $row['sceince'] ?>" name="sceince" placeholder="100" class="form-in" required>
+                                                    <b><label for="">মানবিক বিভাগ</label></b>
+                                                    <input type="number" value="<?php echo $row['humane'] ?>" name="humane" placeholder="100" class="form-in" required>
                                                 </div>
-                                                <div class="multiple-row">
-                                                    <input type="text" name="Address" value="<?php echo $row['Address'] ?>" placeholder="Address" class="form-in" required>
-                                                    <!-- <input type="file" name="image" placeholder="pucture" class="form-in" disabled> -->
 
-                                                    <center><button class="button" type="submit" name="submit">Update
-                                                        </button></center>
-                                                    <a class="button" href="./index.php" style="background: green;">Back</a>
-                                                </div>
+                                                <center><button class="button" type="submit" name="submit">Update
+                                                    </button></center>
+
+                                                <a class="button" href="./index.php" style="background: green;">Back</a>
                                             </form>
                                         </div>
 
@@ -181,7 +192,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <!--**********************************
             Footer start
         ***********************************-->
-        <?php include '../../components/fotter.php'; ?>
+        <div class="footer">
+            <div class="copyright">
+                <p>
+                    © Designed &amp; by
+                    <a href="https://web.facebook.com/shviper" target="_blank">Sajjad Hasan Riyad</a> 2023
+                </p>
+            </div>
+        </div>
         <!--**********************************
             Footer end
         ***********************************-->
@@ -200,11 +218,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     <!-- Dashboard 1 -->
-    <!-- <script src="../../js/dashboard/dashboard-1.js"></script> -->
+    <script src="../../js/dashboard/dashboard-1.js"></script>
 
     <script src="../../js/custom.min.js"></script>
     <script src="../../js/dlabnav-init.js"></script>
-    <!-- <script src="../../js/demo.js"></script> -->
+    <script src="../../js/demo.js"></script>
     <script src="../../js/styleSwitcher.js"></script>
 </body>
 

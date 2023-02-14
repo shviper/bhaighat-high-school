@@ -25,14 +25,14 @@
             </li>
             <li>
                 <a href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-041-graph"></i>
-                    <span class="nav-text">Charts</span>
+                    <i class="fa-solid fa-user-graduate"></i>
+                    <span class="nav-text">Student</span>
                 </a>
             </li>
             <li>
                 <a href="javascript:void()" aria-expanded="false">
                     <i class="flaticon-086-star"></i>
-                    <span class="nav-text">Bootstrap</span>
+                    <span class="nav-text">Gallery</span>
                 </a>
             </li>
             <li>
