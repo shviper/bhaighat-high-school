@@ -1,7 +1,7 @@
                     <div class="headersidebar" style="text-align: center;">
                         <h1 class="fth">প্রধান শিক্ষক</h1>
                         <div class="text-center m-2">
-                            <img src="http://localhost/bhaighat_high_school/img/teacher/img1.jpeg" alt="" width="180px" height="200px" />
+                            <img src="<?php echo $webName ?>/img/teacher/img1.jpeg" alt="" width="180px" height="200px" />
                         </div>
                         <p>
                         <h4>মোহাম্মদ মোজাম্মেল হক</h4>
@@ -15,7 +15,7 @@
                     <div class="headersidebar" style="text-align: center;">
                         <h1 class="fth">সভাপতি</h1>
                         <div class="text-center m-2">
-                            <img src="http://localhost/bhaighat_high_school/img/teacher/Akbar_Hossain.jpg" alt="" width="200px" height="200px" />
+                            <img src="<?php echo $webName ?>/img/teacher/Akbar_Hossain.jpg" alt="" width="200px" height="200px" />
                         </div>
                         <p>
                         <h4>মোঃ আকবর হোসেন</h4>

@@ -137,7 +137,7 @@
                     <ul>
                       <li><i class="fas fa-arrow-circle-right" aria-hidden="true"></i>&nbsp;<a href="#">রুটিন </a></li>
                       <li><i class="fas fa-arrow-circle-right" aria-hidden="true"></i>&nbsp;<a href="#">একাডেমিক ক্যালেন্ডার</a></li>
-                      <li><i class="fas fa-arrow-circle-right" aria-hidden="true"></i>&nbsp;<a href="#">বিদ্যালয়ের পোশাক</a></li>
+                      <li><i class="fas fa-arrow-circle-right" aria-hidden="true"></i>&nbsp;<a href="./pages/dress/">বিদ্যালয়ের পোশাক</a></li>
                       <li><i class="fas fa-arrow-circle-right" aria-hidden="true"></i>&nbsp;<a href="#">ভর্তি বিষয়ক</a></li>
                     </ul>
                   </div>

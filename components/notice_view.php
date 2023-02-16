@@ -9,14 +9,14 @@
 
         <li>
           <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-          <a href="./pages/notice/notice_view.php?id=<?php echo $row['id'] ?>"><?php echo $row['notice_Headline'] ?></a>
+          <a href="<?php echo $webName ?>/pages/notice/notice_view.php?id=<?php echo $row['id'] ?>"><?php echo $row['notice_Headline'] ?></a>
       <?php
 
       }
     }
       ?>
   </ul>
-  <a href="./pages/notice/" class="ntcmore"><button type="button" class="btn btn-dark">
+  <a href="<?php echo $webName ?>/pages/notice/" class="ntcmore"><button type="button" class="btn btn-dark">
       বিস্তারিত..
     </button></a>
 </div>

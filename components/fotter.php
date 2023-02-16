@@ -1,7 +1,7 @@
 <section>
   <div class="container content_wrap">
     <div class="row">
-      <div class="footer_top_bg" style="background: url(&quot;https://tepriganjhighschool.edu.bd/public/assets/img/footer_top_bg.png&quot;) 0% 0% / cover no-repeat; height: 93px;"></div>
+      <div class="footer_top_bg" style="background: url(&quot;<?php echo $webName ?>/img/logo/footer_top_bg.png&quot;) 0% 0% / cover no-repeat; height: 93px;"></div>
       <div class="col-md-4 col-sm-12">
         <ul class="footerList">
           <li><b> পরিকল্পনা ও বাস্তবায়নে:</b> </li>

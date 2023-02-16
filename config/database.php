@@ -1,4 +1,8 @@
  <?php
+
+    $webName = "http://localhost/bhaighat_high_school%20(copy)";
+    $schoolName = "Bhaighat High School";
+    // database config
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -9,7 +13,7 @@
 
     // Check connection
     if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
+        // die("Connection failed: " . mysqli_connect_error());
     }
-    // echo "Connected successfully";
+
     ?> 
