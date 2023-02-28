@@ -1,15 +1,5 @@
 <?php
-
 include("../../config/database.php");
-if (isset($_POST['submit'])) {
-  $exam_type = $_POST['exam_type'];
-  $date = $_POST['date'];
-  $class = $_POST['class'];
-  $branch = $_POST['branch'];
-  $group = $_POST['group'];
-  $roll = $_POST['roll'];
-  $sql = "SELECT * FROM `result_info` WHERE Exam_Type = '$exam_type' and date = '$date' and class = '$class' and branch = '$branch' and groupName = '$group' and roll = '$roll'";
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,7 +57,7 @@ if (isset($_POST['submit'])) {
                   <hr>
                 </center>
                 <div class="lrform" style="padding: 10px;">
-                  <form action="index.php" method="post" role="form">
+                  <form action="result.php" method="post" role="form">
                     <div class="form-group">
                       <label for="class">পরীক্ষার নাম :</label>
                       <select name="exam_type" class="form-control" id="class">
@@ -92,17 +82,13 @@ if (isset($_POST['submit'])) {
                     <div class="form-group">
                       <label for="class">শ্রেণী:</label>
                       <select name="class" class="form-control" id="class">
-                        <option>নির্বাচন করুন ...</option>
-                        <option value="Ten">
-                          Ten </option>
-                        <option value="Six">
-                          Six </option>
-                        <option value="Seven">
-                          Seven </option>
-                        <option value="Nine">
-                          Nine </option>
-                        <option value="Eight">
-                          Eight </option>
+                        <option value="">নির্বাচন করুন ...</option>
+                        <option value="ষষ্ঠ">Six</option>
+                        <option value="সপ্তম">Seven</option>
+                        <option value="অষ্টম">Eight</option>
+                        <option value="নবম">Nine</option>
+                        <option value="দশম">Ten</option>
+                      </select>
                       </select>
                     </div>
                     <div class="form-group">
@@ -123,7 +109,7 @@ if (isset($_POST['submit'])) {
                     <div class="form-group">
                       <label for="dn">গ্রুপ</label>
                       <select name="group" id="group" class="form-control">
-                        <option value="none">none</option>
+                        <option value="">none</option>
                         <option value="science">Science</option>
                         <option value="humanities">Commerce</option>
                         <option value="arts">Arts</option>
@@ -147,19 +133,19 @@ if (isset($_POST['submit'])) {
                           <tbody>
                             <tr>
                               <td width="12%" valign="middle" bgcolor="#EEEEEE" align="left">Roll No</td>
-                              <td width="27%" valign="middle" bgcolor="#EEEEEE" align="left">145222</td>
+                              <td width="27%" valign="middle" bgcolor="#EEEEEE" align="left"><?php echo $row['roll']; ?></td>
                               <td width="22%" valign="middle" bgcolor="#EEEEEE" align="left">Name</td>
-                              <td width="39%" valign="middle" bgcolor="#EEEEEE" align="left">MD. SAJJAD HOSSAIN RIYADH</td>
+                              <td width="39%" valign="middle" bgcolor="#EEEEEE" align="left"><?php echo $row['Student_Name']; ?></td>
                             </tr>
                             <tr>
                               <td valign="middle" bgcolor="#EEEEEE" align="left">Board</td>
                               <td valign="middle" bgcolor="#EEEEEE" align="left">DHAKA</td>
-                              <td valign="middle" bgcolor="#EEEEEE" align="left">Father's Name</td>
-                              <td valign="middle" bgcolor="#EEEEEE" align="left">MD. ATIKUR RAHMAN</td>
+                              <td valign="middle" bgcolor="#EEEEEE" align="left">Parent Name</td>
+                              <td valign="middle" bgcolor="#EEEEEE" align="left"><?php echo $row['parent_name']; ?></td>
                             </tr>
                             <tr>
                               <td valign="middle" bgcolor="#EEEEEE" align="left">Group</td>
-                              <td valign="middle" bgcolor="#EEEEEE" align="left">SCIENCE</td>
+                              <td valign="middle" bgcolor="#EEEEEE" align="left"><?php echo $groupName ?></td>
                               <td valign="middle" bgcolor="#EEEEEE" align="left">Mother's Name</td>
                               <td valign="middle" bgcolor="#EEEEEE" align="left">LUCKY KHATUN</td>
                             </tr>
@@ -192,76 +178,26 @@ if (isset($_POST['submit'])) {
                         <table class="black12" width="100%" cellspacing="1" cellpadding="3" border="0">
                           <tbody>
                             <tr class="black12bold">
-                              <td width="19%" valign="middle" bgcolor="#AFB7BE" align="left">Code</td>
-                              <td width="66%" valign="middle" bgcolor="#AFB7BE" align="left">Subject</td>
-                              <td width="15%" valign="middle" bgcolor="#AFB7BE" align="left">Grade</td>
+                              <th valign="middle" bgcolor="#AFB7BE" align="left">Subject</th>
+                              <th valign="middle" bgcolor="#AFB7BE" align="left">Full Marks</th>
+                              <th valign="middle" bgcolor="#AFB7BE" align="left">CQ</th>
+                              <th valign="middle" bgcolor="#AFB7BE" align="left">MCQ</th>
+                              <th valign="middle" bgcolor="#AFB7BE" align="left">Total</th>
+                              <th valign="middle" bgcolor="#AFB7BE" align="left">Grade</th>
                             </tr>
                             <tr>
-                              <td valign="middle" bgcolor="#EEEEEE" align="left">101</td>
+
                               <td valign="middle" bgcolor="#EEEEEE" align="left">BANGLA 1st</td>
-                              <td valign="middle" bgcolor="#EEEEEE" align="left" >A-</td>
-                            </tr>
-                            <tr>
-                              <td valign="middle" bgcolor="#EEEEEE" align="left">101</td>
-                              <td valign="middle" bgcolor="#EEEEEE" align="left">BANGLA 2nd</td>
-                              <td valign="middle" bgcolor="#EEEEEE" align="left" >A-</td>
+                              <td valign="middle" bgcolor="#EEEEEE" align="left">A-</td>
                             </tr>
 
                             <tr>
-                              <td valign="middle" bgcolor="#DEE1E4" align="left">107</td>
+
                               <td valign="middle" bgcolor="#DEE1E4" align="left">ENGLISH</td>
                               <td valign="middle" bgcolor="#DEE1E4" align="left">A</td>
                             </tr>
-                            <tr>
-                              <td valign="middle" bgcolor="#EEEEEE" align="left">109</td>
-                              <td valign="middle" bgcolor="#EEEEEE" align="left">MATHEMATICS</td>
-                              <td valign="middle" bgcolor="#EEEEEE" align="left">A+</td>
-                            </tr>
-                            <tr>
-                              <td valign="middle" bgcolor="#DEE1E4" align="left">150</td>
-                              <td valign="middle" bgcolor="#DEE1E4" align="left">BANGLADESH AND GLOBAL STUDIES</td>
-                              <td valign="middle" bgcolor="#DEE1E4" align="left">A-</td>
-                            </tr>
-                            <tr>
-                              <td valign="middle" bgcolor="#EEEEEE" align="left">111</td>
-                              <td valign="middle" bgcolor="#EEEEEE" align="left">ISLAM AND MORAL EDUCATION</td>
-                              <td valign="middle" bgcolor="#EEEEEE" align="left">A</td>
-                            </tr>
-                            <tr>
-                              <td valign="middle" bgcolor="#DEE1E4" align="left">136</td>
-                              <td valign="middle" bgcolor="#DEE1E4" align="left">PHYSICS</td>
-                              <td valign="middle" bgcolor="#DEE1E4" align="left">A+</td>
-                            </tr>
-                            <tr>
-                              <td valign="middle" bgcolor="#EEEEEE" align="left">137</td>
-                              <td valign="middle" bgcolor="#EEEEEE" align="left">CHEMISTRY</td>
-                              <td valign="middle" bgcolor="#EEEEEE" align="left">A+</td>
-                            </tr>
-                            <tr>
-                              <td valign="middle" bgcolor="#DEE1E4" align="left">138</td>
-                              <td valign="middle" bgcolor="#DEE1E4" align="left">BIOLOGY</td>
-                              <td valign="middle" bgcolor="#DEE1E4" align="left">A</td>
-                            </tr>
-                            <tr>
-                              <td valign="middle" bgcolor="#EEEEEE" align="left">154</td>
-                              <td valign="middle" bgcolor="#EEEEEE" align="left">INFORMATION AND COMMUNICATION TECHNOLOGY</td>
-                              <td valign="middle" bgcolor="#EEEEEE" align="left">A+</td>
-                            </tr>
-                            <tr>
-                              <td valign="middle" bgcolor="#DEE1E4" align="left">126</td>
-                              <td valign="middle" bgcolor="#DEE1E4" align="left">HIGHER MATHEMATICS</td>
-                              <td valign="middle" bgcolor="#DEE1E4" align="left">A+</td>
-                            </tr>
-                            <tr>
-                              <td valign="middle" bgcolor="#EEEEEE" align="left">147</td>
-                              <td valign="middle" bgcolor="#EEEEEE" align="left">PHYSICAL EDUCATION, HEALTH &amp; SPORTS</td>
-                              <td valign="middle" bgcolor="#EEEEEE" align="left">A+</td>
-                            </tr>
-                            <tr>
-                              <td valign="middle" bgcolor="#DEE1E4" align="left">156</td>
-                              <td valign="middle" bgcolor="#DEE1E4" align="left">CAREER EDUCATION</td>
-                              <td valign="middle" bgcolor="#DEE1E4" align="left">A+</td>
-                            </tr>
+
+
                           </tbody>
                         </table>
                       </td>

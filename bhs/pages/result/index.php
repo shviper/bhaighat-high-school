@@ -190,6 +190,16 @@ include '../../../config/database.php';
 
                                                     </div>
                                                     <center>
+                                                        <h4>NFORMATION AND COMMUNICATION TECHNOLOGY</h4>
+                                                    </center>
+                                                    <hr>
+                                                    <div class="single-row">
+                                                        <input type="text" name="ict_full_marks" value="100" placeholder="ICT Full Marks" class="form-in">
+                                                        <input type="text" name="ict_MCQ" placeholder="ICT MCQ" class="form-in">
+                                                        <input type="text" name="ict_CQ" placeholder="ICT CQ" class="form-in">
+
+                                                    </div>
+                                                    <center>
                                                         <h4>Religion</h4>
                                                     </center>
                                                     <hr>
