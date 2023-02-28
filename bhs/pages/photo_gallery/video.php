@@ -20,10 +20,11 @@ include '../../../config/database.php';
                     ?>
                         <div class="image-area" style="margin:10px;">
                             <video width="300" height="150" controls>
-                                <source src="<?php echo $webName ?>/img/gallery/photo/<?php echo $row["file"] ?>" type="video/mp4">
+                                <source src="<?php echo $webName ?>/img/gallery/photo/<?php echo $row["file"] ?>" type="video/<?php echo $type ?>">
 
                                 Your browser does not support the video tag.
                             </video>
+                            <a class="remove-image" id="remove" href="delete.php?id=<?php echo $row['id'] ?>" style="display: inline;">&#215;</a>
                         </div>
 
             <?php

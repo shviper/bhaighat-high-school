@@ -1,6 +1,6 @@
 <?php
 include '../../auth/islogin.php';
-include '../../config/database.php';
+include '../../../config/database.php';
 ?>
 
 
@@ -24,7 +24,59 @@ include '../../config/database.php';
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        video {
+            border-radius: 10px;
+        }
 
+        .image-area {
+            position: relative;
+            width: 30%;
+            height: 150px;
+            background: #333;
+            /* overflow: scroll; */
+        }
+
+        .image-area img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .img {
+            height: 150px;
+        }
+
+        .remove-image {
+            display: none;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            border-radius: 10em;
+            padding: 2px 6px 3px;
+            text-decoration: none;
+            font: 700 21px/20px sans-serif;
+            background: #555;
+            border: 3px solid #fff;
+            color: #FFF;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            -webkit-transition: background 0.5s;
+            transition: background 0.5s;
+        }
+
+        .remove-image:hover {
+            background: #E54E4E;
+            padding: 3px 7px 5px;
+            top: -11px;
+            right: -11px;
+        }
+
+        .remove-image:active {
+            background: #E54E4E;
+            top: -10px;
+            right: -11px;
+        }
+    </style>
 </head>
 
 <body>
@@ -98,7 +150,7 @@ include '../../config/database.php';
                                             <center>
                                                 <h1>Gallery Add</h1>
                                             </center>
-                                            <form class="contact-form" id="Gallery" enctype="multipart/form-data">
+                                            <form class="contact-form" id="Gallery" method="post" enctype="multipart/form-data" onsubmit="uploadFile(); return false;">
                                                 <div class="multiple-row">
 
                                                     <input type="text" name="title" id="name" placeholder="Enter Gallery Title" class="form-in" required>
@@ -108,6 +160,7 @@ include '../../config/database.php';
                                                 <div class="multiple-row">
 
                                                     <input type="file" name="image[]" multiple class="form-in" required>
+                                                    <div id="progress_bar" style="width: 0%; background-color: #ddd;">0%</div>
 
                                                     <center><button class="button" type="submit" name="submit">Publish
                                                         </button></center>
@@ -121,11 +174,28 @@ include '../../config/database.php';
                             </div>
                         </div>
                     </div>
+
+
+
                     <div class="col-xl-6 col-xxl-12">
                         <div class="card">
                             <div class="card-header d-block d-sm-flex border-0">
                                 <div class="me-3">
-                                    <h4 class="card-title mb-2">Gallery List</h4>
+                                    <h4 class="card-title mb-2">Video...</h4>
+                                    <!-- <span class="fs-12">Lorem ipsum dolor sit amet, consectetur</span> -->
+                                </div>
+                            </div>
+
+                            <div id="video_list">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-xxl-12">
+                        <div class="card">
+                            <div class="card-header d-block d-sm-flex border-0">
+                                <div class="me-3">
+                                    <h4 class="card-title mb-2">Photo...</h4>
                                     <!-- <span class="fs-12">Lorem ipsum dolor sit amet, consectetur</span> -->
                                 </div>
                             </div>
@@ -134,86 +204,111 @@ include '../../config/database.php';
 
                             </div>
                         </div>
+
                     </div>
+
                 </div>
 
             </div>
 
-        </div>
 
+            <script>
+                function uploadFile() {
+                    var form_data = new FormData($('#Gallery')[0]);
 
-        <script>
-            $(document).ready(function() {
-                $("#Gallery").submit(function(e) {
-                    e.preventDefault();
-                    var formData = new FormData(this);
                     $.ajax({
-                        type: "POST",
-                        url: "photo_gallery_add.php",
-                        data: formData,
+                        type: 'POST',
+                        url: 'photo_gallery_add.php',
+                        data: form_data,
                         processData: false,
                         contentType: false,
-                        success: function(data) {
-                            alert(data);
+                        xhr: function() {
+                            var xhr = $.ajaxSettings.xhr();
+                            xhr.upload.onprogress = function(e) {
+                                if (e.lengthComputable) {
+                                    var progress = Math.round((e.loaded / e.total) * 100);
+                                    $('#progress_bar').css('width', progress + '%').text(progress + '%');
+                                }
+                            };
+                            return xhr;
+                        },
+                        success: function(response) {
+                            alert(response);
                         }
                     });
+
+                    setInterval(function() {
+                        $.ajax({
+                            type: 'POST',
+                            url: 'upload_status.php',
+                            success: function(response) {
+                                $('#progress_bar').css('width', response + '%').text(response + '%');
+                            }
+                        });
+                    }, 1000);
+                }
+
+                // $(document).ready(function() {
+                //     $("#Gallery").submit(function(e) {
+                //         e.preventDefault();
+                //         var formData = new FormData(this);
+                //         $.ajax({
+                //             type: "POST",
+                //             url: "photo_gallery_add.php",
+                //             data: formData,
+                //             processData: false,
+                //             contentType: false,
+                //             success: function(data) {
+                //                 alert(data);
+                //             }
+                //         });
+                //     });
+                // });
+            </script>
+
+            <script>
+                $(document).ready(function() {
+                    $("#video_list").load("./video.php");
+                    $("#Gallery_list").load("./gallery_list.php");
+                    setInterval(function() {
+                        $("#Gallery_list").load("./gallery_list.php");
+                    }, 3000);
+
                 });
-            });
-        </script>
+            </script>
 
-
-
-
-        <script>
-            $(document).ready(function() {
-                setInterval(function() {
-
-                    $("#Gallery_list").load("./Gallery_list.php");
-
-                }, 3000);
-
-            });
-        </script>
-
-        <!--**********************************
+            <!--**********************************
             Content body end
         ***********************************-->
 
-        <!--**********************************
+            <!--**********************************
             Footer start
         ***********************************-->
-        <div class="footer">
-            <div class="copyright">
-                <p>
-                    © Designed &amp; by
-                    <a href="https://web.facebook.com/shviper" target="_blank">Sajjad Hasan Riyad</a> 2023
-                </p>
-            </div>
-        </div>
-        <!--**********************************
+            <?php include '../../components/footer.php'; ?>
+            <!--**********************************
             Footer end
         ***********************************-->
-    </div>
-    <!--**********************************
+        </div>
+        <!--**********************************
         Main wrapper end
     ***********************************-->
 
-    <!--**********************************
+        <!--**********************************
         Scripts
     ***********************************-->
-    <!-- Required vendors -->
-    <script src="../../vendor/global/global.min.js"></script>
-    <script src="../../vendor/chart.js/Chart.bundle.min.js"></script>
-    <script src="../../vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+        <!-- Required vendors -->
+        <script src="../../vendor/global/global.min.js"></script>
+        <script src="../../vendor/chart.js/Chart.bundle.min.js"></script>
+        <script src="../../vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
 
 
-    <!-- Dashboard 1 -->
-    <script src="../../js/dashboard/dashboard-1.js"></script>
+        <!-- Dashboard 1 -->
+        <script src="../../js/dashboard/dashboard-1.js"></script>
 
-    <script src="../../js/custom.min.js"></script>
-    <script src="../../js/dlabnav-init.js"></script>
-    <script src="../../js/demo.js"></script>
-    <script src="../../js/styleSwitcher.js"></script>
+        <script src="../../js/custom.min.js"></script>
+        <script src="../../js/dlabnav-init.js"></script>
+        <script src="../../js/demo.js"></script>
+        <script src="../../js/styleSwitcher.js"></script>
 </body>
 
 </html>

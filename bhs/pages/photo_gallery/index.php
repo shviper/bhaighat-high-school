@@ -161,6 +161,7 @@ include '../../../config/database.php';
 
                                                     <input type="file" name="image[]" multiple class="form-in" required>
 
+
                                                     <center><button class="button" type="submit" name="submit">Publish
                                                         </button></center>
 

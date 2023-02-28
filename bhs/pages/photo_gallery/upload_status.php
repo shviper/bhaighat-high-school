@@ -22,10 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
         if (file_exists($folder . $file)) {
-           $newName = uniqid() . ".$file_ext";
+            $newName = uniqid() . ".$file_ext";
             rename($file, $newName);
-            // echo $newName;
-            // exit();
         }
 
         move_uploaded_file($tmp_image, $folder . $file);
@@ -33,8 +31,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (mysqli_query($conn, $sql)) {
             $status = $status + 1;
         }
+        get_upload_status($i);
     }
     if ($file_count == $status) {
         echo "Gallery Added successfully";
+    }
+}
+
+
+function get_upload_status($i)
+{
+    if (isset($_FILES['image'][$i])) {
+        $file_size = $_FILES['image']['size'][$i];
+        $file_path = '../../../img/gallery/photo/' . $_FILES['image']['name'][$i];
+        $current_size = filesize($file_path);
+        $progress = round(($current_size / $file_size) * 100);
+        echo $progress;
     }
 }

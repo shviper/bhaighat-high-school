@@ -90,8 +90,8 @@ include("../../config/database.php");
                                                     $total_s_student = $total_s_student + $total_student;
                                                     $total_s_male = $total_s_male + $row['male'];
                                                     $total_s_female = $total_s_female + $row['female'];
-                                                    $total_s_sc = $total_s_female + $row['sceince'];
-                                                    $total_s_hm = $total_s_female + $row['humane'];
+                                                    $total_s_sc = $$total_s_sc + $row['sceince'];
+                                                    $total_s_hm = $total_s_hm + $row['humane'];
                                             ?>
                                                     <tr>
                                                         <td style="border-color: rgb(204, 204, 204); border-width: 1px; border-style: solid; font-family: Century Gothic; font-size: 9pt; width: 75px;" align="center"><?php echo $row['class'] ?></td>

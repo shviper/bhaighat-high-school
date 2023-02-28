@@ -51,7 +51,7 @@ if (mysqli_num_rows($managing_committee) > 0) {
                                 <td>
                                     <span class="text-success fs-16 font-w500 text-end d-block">
 
-                                        <img src="../../../img/managing_committee/<?php echo $row['Picture']; ?>" alt="" width="20" style="border-radius: 50%;">
+                                        <img src="../../../img/managing_committee/<?php echo $row['Picture']; ?>" alt="<?php echo $row["Name"] ?>" width="20" style="border-radius: 50%;">
 
 
                                     </span>

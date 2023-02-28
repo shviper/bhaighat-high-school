@@ -27,6 +27,7 @@
       line-height: 1;
     }
 
+
     label {
       cursor: pointer;
     }

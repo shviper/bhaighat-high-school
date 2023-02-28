@@ -1,7 +1,6 @@
 <?php
-include '../config/database.php';
 include './auth/islogin.php';
-
+include '../config/database.php';
 ?>
 
 

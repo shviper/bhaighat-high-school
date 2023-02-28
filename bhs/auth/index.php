@@ -1,30 +1,39 @@
 <?php
 include '../../config/database.php';
-if (isset($_COOKIE['isLogIn'])) {
-    header("Location: {$webName}/bhs/");
+if (isset($_COOKIE['isLogin']) || $_COOKIE['isLogin'] === 1) {
+    header("Location: $webName/bhs/");
 }
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
+
+    $email = stripcslashes($email);
+    $password = stripcslashes($password);
+
     $email = mysqli_real_escape_string($conn, $email);
     $password = mysqli_real_escape_string($conn, $password);
 
-    $sql = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
+    $sql = "SELECT * FROM users WHERE email = '$email' and password = '$password'";
     $result = mysqli_query($conn, $sql);
-    if (mysqli_num_rows($result) > 0) {
-        setcookie("isLogIn", "true", time() + (86400 * 30), "/"); // 86400 seconds = 1 day
+    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+    $count = mysqli_num_rows($result);
+
+    if ($count == 1) {
+        setcookie('isLogin', true, time() + (86400 * 30), '/');
         echo
         '<div class="alert alert-success" role="alert">
         Login Success . Redirecting in dashboard...</a>.
         </div>';
-        header("Refresh: 1; URL=../index.php");
+        header("Location: $webName/bhs/");
     } else {
+
         echo
         '<div class="alert alert-danger" role="alert">
-        Login Fail ! Enter valid password or Email</a>.
+        Invalid username or password.</a>.
         </div>';
     }
 }
+
 
 ?>
 

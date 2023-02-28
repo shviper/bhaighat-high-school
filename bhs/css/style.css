@@ -8326,16 +8326,16 @@ a {
   color: #3065D0; }
 
 /* .bg-gray-dark{
-	background:$color_pallate_2 !important;
+  background:$color_pallate_2 !important;
 }
 .bg-purpal{
-	background:$color_pallate_4 !important;
+  background:$color_pallate_4 !important;
 }
 .bg-red{
-	background:$color_pallate_5 !important;
+  background:$color_pallate_5 !important;
 }
 .bg-blue-dark{
-	background:$color_pallate_6 !important;
+  background:$color_pallate_6 !important;
 } */
 .bg-blue {
   background: linear-gradient(to right, rgb(142, 45, 226), rgb(74, 0, 224)); }
@@ -8353,13 +8353,13 @@ a {
   background: #251e71 !important; }
 
 /* .bg-blue-light{
-	background:$color_pallate_8 !important;
+  background:$color_pallate_8 !important;
 }
 .bg-green-light{
-	background:$color_pallate_9 !important;
+  background:$color_pallate_9 !important;
 }
 .bg-green{
-	background:$color_pallate_10 !important;
+  background:$color_pallate_10 !important;
 } */
 .bg-black {
   background: #000; }
@@ -12329,7 +12329,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   padding: 0 30px; }
   [data-sidebar-style="full"][data-layout="vertical"] .dlabnav .metismenu > li > a {
     font-size: 18px;
-    padding: 22px 20px;
+    padding: 10px 20px;
     border-radius: 1rem;
     -webkit-transition: all 0.5s;
     -ms-transition: all 0.5s;
@@ -12344,7 +12344,8 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
       padding: 0 15px; }
       [data-sidebar-style="full"][data-layout="vertical"] .dlabnav .metismenu > li > a {
         font-size: 16px;
-        padding: 15px 20px; } }
+        padding: 10px 20px;
+        } }
 
 [data-sidebar-style="full"][data-layout="vertical"] .menu-toggle .nav-header {
   width: 6.5rem;
@@ -12583,7 +12584,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
       [data-sidebar-style="mini"] .dlabnav .metismenu > li > a {
         padding: 1.125rem 0.875rem;
         /* width: 64px;
-						height: 64px; */
+            height: 64px; */
         text-align: center;
         line-height: 1;
         transition: all 0.5s;
@@ -14035,7 +14036,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     height: calc(100vh - 120px); }
   .chatbox .card-header {
     background: #f4f7ff;
-    padding: 15px 20px;
+    padding: 10px 20px;
     justify-content: center; }
     .chatbox .card-header h6, .chatbox .card-header .h6 {
       font-size: 15px; }
@@ -20992,13 +20993,13 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 
 .input-group {
   /* &> .form-file {
-		display: flex;
-		align-items: center;
+    display: flex;
+    align-items: center;
 
-		&:not(:last-child) .form-file-label,
-		&:not(:last-child) .form-file-label::after { @include border-right-radius(0); }
-		&:not(:first-child) .form-file-label { @include border-left-radius(0); }
-	  } */ }
+    &:not(:last-child) .form-file-label,
+    &:not(:last-child) .form-file-label::after { @include border-right-radius(0); }
+    &:not(:first-child) .form-file-label { @include border-left-radius(0); }
+    } */ }
   .input-group > .form-control-plaintext,
   .input-group > .form-select,
   .input-group > .form-file {
@@ -23185,7 +23186,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
       margin-left: 0;
       margin-right: 0;
       margin-bottom: 15px;
-      padding: 15px 20px;
+      padding: 10px 20px;
       margin-top: -15px; } }
   .page-titles .justify-content-sm-end {
     align-items: center; }
@@ -23217,7 +23218,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
     .page-titles .breadcrumb .breadcrumb-item + .breadcrumb-item:before {
       /* font-family: 'simple-line-icons';
                 font-weight: 400;
-				position:absolute;
+        position:absolute;
                 font-size: 10px; */
       color: #709fba; }
     .page-titles .breadcrumb-datepicker {
@@ -24449,7 +24450,7 @@ code {
   font-size: 0.75rem; }
 
 .vertical-card__menu .card-footer {
-  padding: 15px 20px;
+  padding: 10px 20px;
   background-color: #f5f5f5;
   border-top: none; }
   @media only screen and (min-width: 1200px) and (max-width: 1440px) {
@@ -25132,7 +25133,7 @@ code {
       clear: both; }
     .widget-timeline .timeline > li > .timeline-panel {
       border-radius: 0.5rem;
-      padding: 15px 20px;
+      padding: 10px 20px;
       position: relative;
       display: block;
       margin-left: 40px;
@@ -26165,29 +26166,29 @@ table.dataTable tfoot th {
     color: #fff; }
 
 /* .dataTables_wrapper .dataTables_paginate .paginate_button{
-	border-radius: 12px;
+  border-radius: 12px;
     padding: 12px 20px;
-	background:$primary-light;
-	color:$primary;
-	&:focus,
-	&:active,
-	&:hover{
-		color: $white !important;
-		background: $primary;
-		border: 0 !important;
-		box-shadow: none;
-	}
-	&.current{
-		color: $white !important;
-		background: $primary;
-		border: 0 !important;
-	}
-	&.current:hover,
-	&.previous:hover,
-	&.next:hover{
-		background: $primary;
-		color: $white !important;
-	}
+  background:$primary-light;
+  color:$primary;
+  &:focus,
+  &:active,
+  &:hover{
+    color: $white !important;
+    background: $primary;
+    border: 0 !important;
+    box-shadow: none;
+  }
+  &.current{
+    color: $white !important;
+    background: $primary;
+    border: 0 !important;
+  }
+  &.current:hover,
+  &.previous:hover,
+  &.next:hover{
+    background: $primary;
+    color: $white !important;
+  }
 } */
 .dataTables_wrapper .dataTables_paginate {
   align-items: center;

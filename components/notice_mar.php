@@ -7,7 +7,7 @@
       while ($row = mysqli_fetch_assoc($result)) {
     ?>
 
-        <a href="./pages/notice/notice_view.php?id=<?php echo $row['id'] ?>">
+        <a href="<?php echo $webName ?>/pages/notice/notice_view.php?id=<?php echo $row['id'] ?>">
           <i class="fas fa-arrow-circle-right" aria-hidden="true"></i>
           <?php echo $row['notice_Headline'] ?></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <?php
