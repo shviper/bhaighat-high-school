@@ -1,9 +1,14 @@
     <meta charset="UTF-8" />
+    <?php
+    header('Content-Type: text/html; charset=utf-8');
+    mb_internal_encoding('UTF-8');
+    mb_http_output('UTF-8');
+    ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="<?php echo $webName ?>/img/logo/bhaighatlogo1.png" />
     <title>
-      ভাইঘাট উচ্চ বিদ্যালয়
+      <?php echo $schoolName_bn ?>
     </title>
     <meta name="robots" content="noindex, nofollow" />
 

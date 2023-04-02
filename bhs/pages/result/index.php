@@ -85,7 +85,37 @@ include '../../../config/database.php';
             <div class="container-fluid">
 
                 <div class="row">
-                    <div class="col-xl-9 col-xxl-12">
+                    <div class="col-xl-6 col-xxl-12">
+                        <div class="card">
+                            <center>
+                                <div class="card-header d-block d-sm-flex border-0 row m-1">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-lg-6 col-md-12 mb-3">
+                                            <a href="#result_add" class="button">Result Data Add</a>
+                                        </div>
+                                        <div class="col-sm-12 col-lg-6 col-md-12">
+                                            <a href="#result_edit" class="button">Result Data Edit</a>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="card-header d-block d-sm-flex border-0 row m-1">
+                                    <div class="row ">
+                                        <div class="col-sm-12 col-lg-6 col-md-12 mb-3">
+                                            <a href="#download" class="button">Download Marksheet</a>
+                                        </div>
+                                        <div class="col-sm-12 col-lg-6 col-md-12">
+                                            <a href="all_student.php" class="button">View student Info</a>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </center>
+                        </div>
+                    </div>
+                    <div class="col-xl-9 col-xxl-12" id="result_add">
 
                         <div class="card">
 
@@ -96,41 +126,45 @@ include '../../../config/database.php';
                                     <div class="contact-container">
                                         <div class="contact-left">
                                             <center>
-                                                <h1>Result</h1>
+                                                <h1>Result Data Add</h1>
                                             </center>
-                                            <form class="contact-form" action="add.php" method="POST">
+                                            <form class="contact-form" method="get" action="add.php">
                                                 <div class="single-row">
-                                                    <input type="number" require name="roll" id="roll" placeholder="roll" class="form-in" require>
                                                     <select id="className" onchange="showFields()" name="class" class="form-in" require>
-                                                        <option value="">Select a class</option>
-                                                        <option value="ষষ্ঠ">Six</option>
-                                                        <option value="সপ্তম">Seven</option>
-                                                        <option value="অষ্টম">Eight</option>
-                                                        <option value="নবম">Nine</option>
-                                                        <option value="দশম">Ten</option>
+                                                        <option value="">শ্রেণি নির্বাচন করুন ...</option>
+                                                        <option value="ষষ্ঠ">ষষ্ঠ</option>
+                                                        <option value="সপ্তম">সপ্তম</option>
+                                                        <option value="অষ্টম">অষ্টম</option>
+                                                        <option value="নবম">নবম</option>
+                                                        <option value="দশম">দশম</option>
                                                     </select>
+                                                    <select name="branch" id="branch" class="form-in" require>
+                                                        <option value="">শাখা নির্বাচন করুন ...</option>
+                                                        <option value="জুই">জুই</option>
+                                                        <option value="বেলী">বেলী</option>
+                                                        <option value="দোয়েল">দোয়েল</option>
+                                                        <option value="কোয়েল">কোয়েল</option>
+                                                        <option value="পদ্মা">পদ্মা</option>
+                                                        <option value="মেঘনা">মেঘনা</option>
+                                                        <option value="নজরুল">নজরুল</option>
+                                                        <option value="রবীন্দ্র">রবীন্দ্র</option>
+                                                        <option value="রোকেয়া">রোকেয়া</option>
+                                                        <option value="সুফিয়া">সুফিয়া</option>
+                                                    </select>
+
                                                 </div>
                                                 <div class="single-row">
 
-                                                    <select name="branch" id="branch" class="form-in" require>
-                                                        <option value="জুই">Jui</option>
-                                                        <option value="বেলী">Beli</option>
-                                                        <option value="দোয়েল">Duel</option>
-                                                        <option value="কোয়েল">Kuel</option>
-                                                        <option value="পদ্মা">Meghna</option>
-                                                        <option value="মেঘনা">Padma</option>
-                                                        <option value="নজরুল">Nazrul</option>
-                                                        <option value="রবীন্দ্র">Rabindra</option>
-                                                        <option value="রোকেয়া">Rokeya</option>
-                                                        <option value="সুফিয়া">Sufia</option>
-                                                    </select>
-                                                    <select name="group" id="group" class="form-in" onchange="showFields()">
-                                                        <option value=" none">none</option>
+
+                                                    <select name="groupName" id="group" class="form-in" onchange="showFields()">
+                                                        <option value="none" selected>গ্রুপ নির্বাচন করুন ...</option>
+                                                        <option value="none">none</option>
                                                         <option value="science">Science</option>
                                                         <option value="commerce">Commerce</option>
                                                         <option value="arts">Arts</option>
                                                     </select>
                                                     <select name="exam_type" class="form-in">
+                                                        <option value="">পরীক্ষার নাম নির্বাচন করুন ...</option>
                                                         <option value="গঠনকালীন মূল্যায়ণ">গঠনকালীন মূল্যায়ণ</option>
                                                         <option value="শ্রেণি অভিক্ষা-২">শ্রেণি অভিক্ষা-২</option>
                                                         <option value="শ্রেণি অভিক্ষা-১">শ্রেণি অভিক্ষা-১</option>
@@ -141,215 +175,37 @@ include '../../../config/database.php';
 
                                                 </div>
 
-                                                <div class="genarel">
-                                                    <center>
-                                                        <h4>Bangla</h4>
-                                                    </center>
-                                                    <hr>
-                                                    <div class="single-row">
 
-                                                        <input type="number" require name="bangla_1st_full_marks" value="100" placeholder="1st Full Marks" class="form-in">
-                                                        <input type="number" require name="bangla_1st_MCQ" placeholder="1st MCQ" class="form-in">
-                                                        <input type="number" require name="bangla_1st_CQ" placeholder="1st CQ" class="form-in">
-                                                        <input type="number" require name="bangla_2nd_full_marks" value="100" placeholder="2nd Full Marks" class="form-in">
-                                                        <input type="number" require name="bangla_2nd_MCQ" placeholder="2nd MCQ" class="form-in">
-                                                        <input type="number" require name="bangla_2nd_CQ" placeholder="2nd CQ" class="form-in">
-
-                                                    </div>
-                                                    <center>
-                                                        <h4>English</h4>
-                                                    </center>
-                                                    <hr>
-                                                    <div class="single-row">
-                                                        <input type="number" require name="english_1st_full_marks" value="100" placeholder="1st Full Marks" class="form-in">
-                                                        <input type="number" require name="english_1st_MCQ" placeholder="1st MCQ" class="form-in">
-                                                        <input type="number" require name="english_1st_CQ" placeholder="1st CQ" class="form-in">
-                                                        <input type="number" require name="english_2nd_full_marks" value="100" placeholder="2nd Full Marks" class="form-in">
-                                                        <input type="number" require name="english_2nd_MCQ" placeholder="2nd MCQ" class="form-in">
-                                                        <input type="number" require name="english_2nd_CQ" placeholder="2nd CQ" class="form-in">
-
-                                                    </div>
-                                                    <center>
-                                                        <h4>Math</h4>
-                                                    </center>
-                                                    <hr>
-                                                    <div class="single-row">
-                                                        <input type="number" require name="math_full_marks" value="100" placeholder="Math Full Marks" class="form-in">
-                                                        <input type="number" require name="math_MCQ" placeholder="Math MCQ" class="form-in">
-                                                        <input type="number" require name="math_CQ" placeholder="Math CQ" class="form-in">
-
-                                                    </div>
-                                                    <center>
-                                                        <h4>bangladesh and global studies</h4>
-                                                    </center>
-                                                    <hr>
-                                                    <div class="single-row">
-                                                        <input type="text" name="bgs_full_marks" value="100" placeholder="BGS Full Marks" class="form-in">
-                                                        <input type="text" name="bgs_MCQ" placeholder="BGS MCQ" class="form-in">
-                                                        <input type="text" name="bgs_CQ" placeholder="BGS CQ" class="form-in">
-
-                                                    </div>
-                                                    <center>
-                                                        <h4>NFORMATION AND COMMUNICATION TECHNOLOGY</h4>
-                                                    </center>
-                                                    <hr>
-                                                    <div class="single-row">
-                                                        <input type="text" name="ict_full_marks" value="100" placeholder="ICT Full Marks" class="form-in">
-                                                        <input type="text" name="ict_MCQ" placeholder="ICT MCQ" class="form-in">
-                                                        <input type="text" name="ict_CQ" placeholder="ICT CQ" class="form-in">
-
-                                                    </div>
-                                                    <center>
-                                                        <h4>Religion</h4>
-                                                    </center>
-                                                    <hr>
-                                                    <div class="single-row">
-                                                        <input type="number" require name="religion_full_marks" value="100" placeholder="Religion Full Marks" class="form-in">
-                                                        <input type="number" require name="religion_MCQ" placeholder="Religion MCQ" class="form-in">
-                                                        <input type="number" require name="religion_CQ" placeholder="Religion CQ" class="form-in">
-
-                                                    </div>
-                                                    <center>
-                                                        <h4>Science</h4>
-                                                    </center>
-                                                    <hr>
-                                                    <div class="single-row">
-                                                        <input type="number" require name="science_full_marks" value="100" placeholder="science Full Marks" class="form-in">
-                                                        <input type="number" require name="science_MCQ" placeholder="science MCQ" class="form-in">
-                                                        <input type="number" require name="science_CQ" placeholder="science CQ" class="form-in">
-
-                                                    </div>
-
+                                                <div class="single-row">
+                                                    <select name="subject" class="form-in">
+                                                        <option value="" selected>বিষয় নির্বাচন করুন ...</option>
+                                                        <option value="bangla_1st">bangla_1st</option>
+                                                        <option value="bangla_2nd">bangla_2nd</option>
+                                                        <option value="english_1st">english_1st</option>
+                                                        <option value="english_2nd">english_2nd</option>
+                                                        <option value="math">math</option>
+                                                        <option value="bgs">bgs</option>
+                                                        <option value="ict">ict</option>
+                                                        <option value="religion">religion</option>
+                                                        <option value="science">science</option>
+                                                        <option value="biology">biology</option>
+                                                        <option value="chemistry">chemistry</option>
+                                                        <option value="physics">physics</option>
+                                                        <option value="higher_math">higher_math</option>
+                                                        <option value="agricultural_studies">agricultural_studies</option>
+                                                        <option value="economical">economical</option>
+                                                        <option value="geography">geography</option>
+                                                        <option value="history">history</option>
+                                                        <option value="finance">finance</option>
+                                                        <option value="accounting">accounting</option>
+                                                        <option value="business_ent">business_ent</option>
+                                                    </select>
+                                                    <input type="number" name="total" class="form-in" placeholder="Full Marks" required>
                                                 </div>
-
-                                                <div id="science" style="display: none;">
-                                                    <hr>
-                                                    <h2>Science Subject</h2>
-                                                    <center>
-                                                        <h4>Biology</h4>
-                                                    </center>
-                                                    <hr>
-                                                    <div class="single-row">
-                                                        <input type="number" require name="biology_full_marks" value="100" class="form-in" placeholder="Biology Full Marks">
-                                                        <input type="number" require name="biology_MCQ" class="form-in" placeholder="Biology MCQ">
-                                                        <input type="number" require name="biology_CQ" class="form-in" placeholder="Biology CQ">
-                                                    </div>
-                                                    <center>
-                                                        <h4>Chemistry</h4>
-                                                    </center>
-                                                    <hr>
-                                                    <div class="single-row">
-                                                        <input type="number" require name="chemistry_full_marks" value="100" class="form-in" placeholder="Chemistry Full Marks">
-                                                        <input type="number" require name="chemistry_MCQ" class="form-in" placeholder="Chemistry MCQ">
-                                                        <input type="number" require name="chemistry_CQ" class="form-in" placeholder="Chemistry CQ">
-                                                    </div>
-                                                    <center>
-                                                        <h4>Physics</h4>
-                                                    </center>
-                                                    <hr>
-                                                    <div class="single-row">
-                                                        <input type="number" require name="physics_full_marks" value="100" class="form-in" placeholder="Physics Full Marks">
-                                                        <input type="number" require name="physics_MCQ" class="form-in" placeholder="Physics MCQ">
-                                                        <input type="number" require name="physics_CQ" class="form-in" placeholder="Physics CQ">
-                                                    </div>
-                                                    <center>
-                                                        <h4>Higher Math</h4>
-                                                    </center>
-                                                    <hr>
-                                                    <div class="single-row">
-                                                        <!-- Higher Math -->
-                                                        <input type="number" require name="higher_math_full_marks" value="100" class="form-in" placeholder="Higher Math Full Marks">
-                                                        <input type="number" require name="higher_math_MCQ" class="form-in" placeholder="Higher Math MCQ">
-                                                        <input type="number" require name="higher_math_CQ" class="form-in" placeholder="Higher Math CQ">
-                                                    </div>
-                                                    <center>
-                                                        <h4>Agricultural Studies</h4>
-                                                    </center>
-                                                    <hr>
-                                                    <div class="single-row">
-                                                        <!-- Agricultural Studies -->
-                                                        <input type="number" require name="agricultural_studies_full_marks" value="100" class="form-in" placeholder="Agricultural Studies Full Marks">
-                                                        <input type="number" require name="agricultural_studies_MCQ" class="form-in" placeholder="Agricultural Studies MCQ">
-                                                        <input type="number" require name="agricultural_studies_CQ" class="form-in" placeholder="Agricultural Studies CQ">
-                                                    </div>
-
-                                                </div>
-                                                <div id="commerce" style="display: none;">
-                                                    <hr>
-                                                    <h2>Commerce Subject</h2>
-
-                                                    <center>
-                                                        <h4>Finance</h4>
-                                                    </center>
-                                                    <hr>
-                                                    <div class="single-row">
-                                                        <!-- Finance -->
-                                                        <input type="number" require name="finance_full_marks" value="100" class="form-in" placeholder="Finance Full Marks">
-                                                        <input type="number" require name="finance_MCQ" class="form-in" placeholder="Finance MCQ">
-                                                        <input type="number" require name="finance_CQ" class="form-in" placeholder="Finance CQ">
-                                                    </div>
-                                                    <center>
-                                                        <h4>Accounting</h4>
-                                                    </center>
-                                                    <hr>
-                                                    <div class="single-row">
-                                                        <!-- Accounting -->
-                                                        <input type="number" require name="accounting_full_marks" value="100" class="form-in" placeholder="Accounting Full Marks">
-                                                        <input type="number" require name="accounting_MCQ" class="form-in" placeholder="Accounting MCQ">
-                                                        <input type="number" require name="accounting_CQ" class="form-in" placeholder="Accounting CQ">
-                                                    </div>
-                                                    <center>
-                                                        <h4>Business_Ent</h4>
-                                                    </center>
-                                                    <hr>
-                                                    <div class="single-row">
-                                                        <!-- Business_Ent -->
-                                                        <input type="number" require name="business_ent_full_marks" value="100" class="form-in" placeholder="Business_Ent Full Marks">
-                                                        <input type="number" require name="business_ent_MCQ" class="form-in" placeholder="Business_Ent MCQ">
-                                                        <input type="number" require name="business_ent_CQ" class="form-in" placeholder="Business_Ent CQ">
-
-                                                    </div>
-                                                </div>
-                                                <div id="arts" style="display: none;">
-                                                    <hr>
-                                                    <h2>Arts Subject</h2>
-                                                    <center>
-                                                        <h4>Economical</h4>
-                                                    </center>
-                                                    <hr>
-                                                    <div class="single-row">
-                                                        <!-- Economical -->
-                                                        <input type="number" require name="economical_full_marks" value="100" class="form-in" placeholder="Economical Full Marks">
-                                                        <input type="number" require name="economical_MCQ" class="form-in" placeholder="Economical MCQ">
-                                                        <input type="number" require name="economical_CQ" class="form-in" placeholder="Economical CQ">
-                                                    </div>
-                                                    <center>
-                                                        <h4>Geography and Environmen</h4>
-                                                    </center>
-                                                    <hr>
-                                                    <div class="single-row">
-                                                        <!-- Geography and Environment -->
-                                                        <input type="number" require name="geography_and_environment_full_marks" value="100" class="form-in" placeholder="Geography and Environment Full Marks">
-                                                        <input type="number" require name="geography_and_environment_MCQ" class="form-in" placeholder="Geography and Environment MCQ">
-                                                        <input type="number" require name="geography_and_environment_CQ" class="form-in" placeholder="Geography and Environment CQ">
-                                                    </div>
-                                                    <center>
-                                                        <h4>History</h4>
-                                                    </center>
-                                                    <hr>
-                                                    <div class="single-row">
-                                                        <!-- History -->
-                                                        <input type="number" require name="history_full_marks" value="100" class="form-in" placeholder="History Full Marks">
-                                                        <input type="number" require name="history_MCQ" class="form-in" placeholder="History MCQ">
-                                                        <input type="number" require name="history_CQ" class="form-in" placeholder="History CQ">
-                                                    </div>
-
-                                                </div>
-
                                                 <div class="multiple-row">
 
                                                     <center>
-                                                        <input type="submit" class="button" value="Publish" name="submit">
+                                                        <input type="submit" class="button" value="Result-Add">
                                                     </center>
 
                                                 </div>
@@ -361,7 +217,7 @@ include '../../../config/database.php';
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-9 col-xxl-12">
+                    <div class="col-xl-9 col-xxl-12" id="result_edit">
 
                         <div class="card">
 
@@ -372,14 +228,189 @@ include '../../../config/database.php';
                                     <div class="contact-container">
                                         <div class="contact-left">
                                             <center>
-                                                <h1>Result Import with Excel</h1>
+                                                <h1>Result Edit</h1>
                                             </center>
-                                            <form enctype="multipart/form-data" method="post" class="contact-form" action="Exsel_add.php">
+                                            <form class="contact-form" method="get" action="edit.php">
+                                                <div class="single-row">
+                                                    <select id="className" onchange="showFields()" name="class" class="form-in" require>
+                                                        <option value="" selected>শ্রেণি নির্বাচন করুন ...</option>
+                                                        <option value="ষষ্ঠ">ষষ্ঠ</option>
+                                                        <option value="সপ্তম">সপ্তম</option>
+                                                        <option value="অষ্টম">অষ্টম</option>
+                                                        <option value="নবম">নবম</option>
+                                                        <option value="দশম">দশম</option>
+                                                    </select>
+                                                    <select name="branch" id="branch" class="form-in" require>
+                                                        <option value="">শাখা নির্বাচন করুন ...</option>
+                                                        <option value="জুই">জুই</option>
+                                                        <option value="বেলী">বেলী</option>
+                                                        <option value="দোয়েল">দোয়েল</option>
+                                                        <option value="কোয়েল">কোয়েল</option>
+                                                        <option value="পদ্মা">পদ্মা</option>
+                                                        <option value="মেঘনা">মেঘনা</option>
+                                                        <option value="নজরুল">নজরুল</option>
+                                                        <option value="রবীন্দ্র">রবীন্দ্র</option>
+                                                        <option value="রোকেয়া">রোকেয়া</option>
+                                                        <option value="সুফিয়া">সুফিয়া</option>
+                                                    </select>
 
+                                                </div>
+                                                <div class="single-row">
+
+
+                                                    <select name="groupName" id="group" class="form-in" onchange="showFields()">
+                                                        <option value="" selected>গ্রুপ নির্বাচন করুন ...</option>
+                                                        <option value="none">none</option>
+                                                        <option value="science">Science</option>
+                                                        <option value="commerce">Commerce</option>
+                                                        <option value="arts">Arts</option>
+                                                    </select>
+                                                    <select name="exam_type" class="form-in">
+                                                        <option value="">পরীক্ষার নাম নির্বাচন করুন ...</option>
+                                                        <option value="গঠনকালীন মূল্যায়ণ">গঠনকালীন মূল্যায়ণ</option>
+                                                        <option value="শ্রেণি অভিক্ষা-২">শ্রেণি অভিক্ষা-২</option>
+                                                        <option value="শ্রেণি অভিক্ষা-১">শ্রেণি অভিক্ষা-১</option>
+                                                        <option value="সাপ্তাহিক">সাপ্তাহিক</option>
+                                                        <option value="নির্বাচনী">নির্বাচনী</option>
+                                                        <option value="বার্ষিক">বার্ষিক</option>
+                                                    </select>
+
+                                                </div>
+
+
+                                                <div class="single-row">
+                                                    <select name="subject" class="form-in">
+                                                        <option value="" selected>বিষয় নির্বাচন করুন ...</option>
+                                                        <option value="bangla_1st">bangla_1st</option>
+                                                        <option value="bangla_2nd">bangla_2nd</option>
+                                                        <option value="english_1st">english_1st</option>
+                                                        <option value="english_2nd">english_2nd</option>
+                                                        <option value="math">math</option>
+                                                        <option value="bgs">bgs</option>
+                                                        <option value="ict">ict</option>
+                                                        <option value="religion">religion</option>
+                                                        <option value="science">science</option>
+                                                        <option value="biology">biology</option>
+                                                        <option value="chemistry">chemistry</option>
+                                                        <option value="physics">physics</option>
+                                                        <option value="higher_math">higher_math</option>
+                                                        <option value="agricultural_studies">agricultural_studies</option>
+                                                        <option value="economical">economical</option>
+                                                        <option value="geography">geography</option>
+                                                        <option value="history">history</option>
+                                                        <option value="finance">finance</option>
+                                                        <option value="accounting">accounting</option>
+                                                        <option value="business_ent">business_ent</option>
+                                                    </select>
+
+                                                </div>
                                                 <div class="multiple-row">
-                                                    <input class="form-in" type="file" name="file" class="form-in" required>
+
                                                     <center>
-                                                        <input type="submit" class="button" value="Publish" name="submit2">
+                                                        <input type="submit" class="button" value="Edit-Result" style="color: #000;background-color: #31d2f2;border-color: #25cff2">
+                                                    </center>
+
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-9 col-xxl-12" id="download">
+
+                        <div class="card">
+
+                            <div class="card-body">
+
+                                <div class="row align-items-center">
+
+                                    <div class="contact-container">
+                                        <div class="contact-left">
+                                            <center>
+                                                <h1>Download Marksheet</h1>
+                                            </center>
+                                            <form class="contact-form" method="get" action="download.php">
+                                                <div class="single-row">
+                                                    <select id="className" onchange="showFields()" name="class" class="form-in" require>
+                                                        <option value="" selected>শ্রেণি নির্বাচন করুন ...</option>
+                                                        <option value="ষষ্ঠ">ষষ্ঠ</option>
+                                                        <option value="সপ্তম">সপ্তম</option>
+                                                        <option value="অষ্টম">অষ্টম</option>
+                                                        <option value="নবম">নবম</option>
+                                                        <option value="দশম">দশম</option>
+                                                    </select>
+                                                    <select name="branch" id="branch" class="form-in" require>
+                                                        <option value="" selected>শাখা নির্বাচন করুন ...</option>
+                                                        <option value="জুই">জুই</option>
+                                                        <option value="বেলী">বেলী</option>
+                                                        <option value="দোয়েল">দোয়েল</option>
+                                                        <option value="কোয়েল">কোয়েল</option>
+                                                        <option value="পদ্মা">পদ্মা</option>
+                                                        <option value="মেঘনা">মেঘনা</option>
+                                                        <option value="নজরুল">নজরুল</option>
+                                                        <option value="রবীন্দ্র">রবীন্দ্র</option>
+                                                        <option value="রোকেয়া">রোকেয়া</option>
+                                                        <option value="সুফিয়া">সুফিয়া</option>
+                                                    </select>
+
+                                                </div>
+                                                <div class="single-row">
+
+
+                                                    <select name="groupName" id="group" class="form-in" onchange="showFields()">
+                                                        <option value="none" selected>গ্রুপ নির্বাচন করুন ...</option>
+                                                        <option value="none">none</option>
+                                                        <option value="science">Science</option>
+                                                        <option value="commerce">Commerce</option>
+                                                        <option value="arts">Arts</option>
+                                                    </select>
+                                                    <select name="exam_type" class="form-in">
+                                                        <option value="">পরীক্ষার নাম নির্বাচন করুন ...</option>
+                                                        <option value="গঠনকালীন মূল্যায়ণ">গঠনকালীন মূল্যায়ণ</option>
+                                                        <option value="শ্রেণি অভিক্ষা-২">শ্রেণি অভিক্ষা-২</option>
+                                                        <option value="শ্রেণি অভিক্ষা-১">শ্রেণি অভিক্ষা-১</option>
+                                                        <option value="সাপ্তাহিক">সাপ্তাহিক</option>
+                                                        <option value="নির্বাচনী">নির্বাচনী</option>
+                                                        <option value="বার্ষিক">বার্ষিক</option>
+                                                    </select>
+
+                                                </div>
+
+
+                                                <div class="single-row">
+                                                    <select name="subject" class="form-in">
+                                                        <option value="" selected>বিষয় নির্বাচন করুন ...</option>
+                                                        <option value="bangla_1st">bangla_1st</option>
+                                                        <option value="bangla_2nd">bangla_2nd</option>
+                                                        <option value="english_1st">english_1st</option>
+                                                        <option value="english_2nd">english_2nd</option>
+                                                        <option value="math">math</option>
+                                                        <option value="bgs">bgs</option>
+                                                        <option value="ict">ict</option>
+                                                        <option value="religion">religion</option>
+                                                        <option value="science">science</option>
+                                                        <option value="biology">biology</option>
+                                                        <option value="chemistry">chemistry</option>
+                                                        <option value="physics">physics</option>
+                                                        <option value="higher_math">higher_math</option>
+                                                        <option value="agricultural_studies">agricultural_studies</option>
+                                                        <option value="economical">economical</option>
+                                                        <option value="geography">geography</option>
+                                                        <option value="history">history</option>
+                                                        <option value="finance">finance</option>
+                                                        <option value="accounting">accounting</option>
+                                                        <option value="business_ent">business_ent</option>
+                                                        <option value="all">All</option>
+                                                    </select>
+
+                                                </div>
+                                                <div class="multiple-row">
+
+                                                    <center>
+                                                        <input type="submit" style="background-color: #0d6efd;border-color: #0d6efd;color: #fff;" class="button" value="Download">
                                                     </center>
 
                                                 </div>
@@ -392,13 +423,46 @@ include '../../../config/database.php';
                         </div>
                     </div>
 
+
                 </div>
 
             </div>
 
         </div>
 
+        <script>
+            $(document).ready(function() {
+                $("#result2").submit(function(e) {
+                    e.preventDefault();
+                    var formData = new FormData(this);
+                    $.ajax({
+                        type: "POST",
+                        url: "add.php",
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function(data) {
+                            alert(data);
+                        }
+                    });
+                });
+                $("#result3").submit(function(e) {
+                    e.preventDefault();
+                    var formData = new FormData(this);
+                    $.ajax({
+                        type: "POST",
+                        url: "Exsel_add.php",
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function(data) {
+                            alert(data);
+                        }
+                    });
+                });
 
+            });
+        </script>
 
 
         <script>

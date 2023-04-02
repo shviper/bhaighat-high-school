@@ -9,13 +9,6 @@ ini_set('display_errors', true);
 
 require_once __DIR__ . '/src/SimpleXLSX.php';
 
-function banglaToNum($number)
-{
-    $engNumber = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
-    $bangNumber = array('০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯');
-    $converted = str_replace($bangNumber, $engNumber, $number);
-    return intval($converted);
-}
 
 
 if (isset($_POST['submit2'])) {
@@ -47,14 +40,33 @@ if (isset($_POST['submit2'])) {
         $num_rows = $dim[1];
 
         foreach ($xlsx->rows() as $r) {
-            $name = $r[0];
-            $p = $r[1];
-            $v = $r[2];
-            $c = $r[3];
-            $b = $r[4];
-            $roll = banglaToNum($r[5]);
-            $num = banglaToNum($r[6]);
-            $sql = "INSERT INTO student_info (`Student_Name`,`parent_name`,`village`,`class`, `branch`,`roll`,`number`) VALUES ('$name', '$p', '$v', '$c', '$b', '$roll', '$num')";
+            $Student_Name_Bangla = $r[0];
+            $Student_Name_English = $r[1];
+            $Fathers_Name_Bangla = $r[2];
+            $Fathers_Name_English = $r[3];
+            $Mothers_Name_Bangla = $r[4];
+            $Mothers_Name_English = $r[5];
+            $Divission = $r[6];
+            $District = $r[7];
+            $Upazila = $r[8];
+            $Post_office = $r[9];
+            $Village = $r[10];
+            $Class = $r[11];
+            $Section = $r[12];
+            $Group = $r[13];
+            $Roll_No = $r[14];
+            $Session = $r[15];
+            $Gender = $r[16];
+            $Religion = $r[17];
+            $St_Code = $r[18];
+            $UID_Number = $r[19];
+            $Mobile_Number = $r[20];
+            $Blood_Group = $r[21];
+            $img = $r[22];
+
+            $sql = "INSERT INTO student_info2 (Student_Name_Bangla, Student_Name_English, Fathers_Name_Bangla, Fathers_Name_English, Mothers_Name_Bangla, Mothers_Name_English, Divission, District, Upazila, Post_office, Village, Class, Section, Group_name, Roll_No, Session, Gender, Religion, St_Code, UID_Number, Mobile_Number, Blood_Group, img)
+VALUES ( '$Student_Name_Bangla', '$Student_Name_English', '$Fathers_Name_Bangla', '$Fathers_Name_English', '$Mothers_Name_Bangla', '$Mothers_Name_English', '$Divission', '$District', '$Upazila', '$Post_office', '$Village', '$Class', '$Section', '$Group', '$Roll_No', '$Session', '$Gender', '$Religion', '$St_Code', '$UID_Number', '$Mobile_Number', '$Blood_Group', '$img')
+";
             mysqli_query($conn, $sql);
         }
         header("Location: ./index.php");

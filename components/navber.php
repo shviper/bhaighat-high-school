@@ -34,6 +34,9 @@
                     <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-57">
                       <a href="<?php echo $webName ?>/pages/contact/" class="nav-link">যোগাযোগ</a>
                     </li>
+                    <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-57">
+                      <a href="<?php echo $webName ?>/bhs/" class="nav-link">লগইন</a>
+                    </li>
                   </ul>
                 </div>
               </div>

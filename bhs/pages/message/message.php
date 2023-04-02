@@ -21,7 +21,7 @@ if (mysqli_num_rows($message) > 0) {
                             <tr>
 
                                 <td>
-                                    <a id="delete" href="delete.php?id=<?php echo $row['Id'] ?>">
+                                    <a id="delete" href="delete.php?id=<?php echo $row['id'] ?>">
                                         <h6 class="fs-16 text-black font-w600 mb-0"><i class="fa-solid fa-trash"></i></h6>
                                     </a>
                                 </td>

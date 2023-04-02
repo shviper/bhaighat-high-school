@@ -10,9 +10,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $Address = $_POST['Address'];
     $Mobile_Number = $_POST['Mobile_Number'];
     $Email = $_POST['Email'];
+    $password = $_POST['password'];
     $join_date = $_POST['join_date'];
 
-    $sql = "UPDATE teacher SET Name = '$Name', Designation = '$Designation', Educational_Qualifications = '$Educational_Qualifications', Mobile_Number = '$Mobile_Number', Email = '$Email', join_date = '$join_date' WHERE Id = $id";
+    $sql = "UPDATE teacher SET Name = '$Name', Designation = '$Designation', Educational_Qualifications = '$Educational_Qualifications', Mobile_Number = '$Mobile_Number', Email = '$Email',password = '$password', join_date = '$join_date' WHERE Id = $id";
 
 
     if (mysqli_query($conn, $sql)) {
@@ -140,12 +141,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                                 </div>
                                                 <div class="single-row">
 
-                                                    <input type="Email" name="Email" value="<?php echo $row['Email'] ?>" placeholder="example@email.com" class="form-in" required style="text-transform: lowercase;">
+                                                    <input type="text" name="Address" value="<?php echo $row['Address'] ?>" placeholder="Address" class="form-in" required>
                                                     <input type="date" name="join_date" class="form-in" value="<?php echo $row['join_date'] ?>" required>
                                                 </div>
+                                                <div class="single-row">
+                                                    <input type="Email" name="Email" placeholder="example@email.com" class="form-in" required style="text-transform: lowercase;" value="<?php echo $row['Email'] ?>">
+
+                                                    <input type="text" name="password" id="password" placeholder="password" class="form-in" required value="<?php echo $row['password'] ?>">
+
+
+                                                </div>
                                                 <div class="multiple-row">
-                                                    <input type="text" name="Address" value="<?php echo $row['Address'] ?>" placeholder="Address" class="form-in" required>
-                                                    <!-- <input type="file" name="image" placeholder="pucture" class="form-in" disabled> -->
+
+
 
                                                     <center><button class="button" type="submit" name="submit">Update
                                                         </button></center>

@@ -1,12 +1,18 @@
                     <div class="headersidebar" style="text-align: center;">
                         <h1 class="fth">প্রধান শিক্ষক</h1>
                         <div class="text-center m-2">
-                            <img src="<?php echo $webName ?>/img/teacher/img1.jpeg" alt="" width="180px" height="200px" />
+                            <?php
+                            $sql = "SELECT * FROM `teacher` WHERE Designation = 'প্রধান শিক্ষক'";
+                            $result = mysqli_query($conn, $sql);
+                            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+                            ?>
+                            <img src="<?php echo $webName ?>/img/teacher/<?php echo $row['Picture'] ?>" alt="" width="180px" height="200px" />
                         </div>
                         <p>
-                        <h4>মোহাম্মদ মোজাম্মেল হক</h4>
-                        <h6>প্রধান শিক্ষক</h6>
-                        <h6>ভাইঘাট উচ্চ বিদ্যালয়</h6>
+                        <h4><?php echo $row['Name'] ?></h4>
+                        <h6><?php echo $row['Designation'] ?></h6>
+                        <h6><?php echo $schoolName_bn ?></h6>
 
 
                         </p>
@@ -15,12 +21,18 @@
                     <div class="headersidebar" style="text-align: center;">
                         <h1 class="fth">সভাপতি</h1>
                         <div class="text-center m-2">
-                            <img src="<?php echo $webName ?>/img/teacher/Akbar_Hossain.jpg" alt="" width="200px" height="200px" />
+                            <?php
+                            $sql = "SELECT * FROM `managing_committee` WHERE id = 1";
+                            $result = mysqli_query($conn, $sql);
+                            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+                            ?>
+                            <img src="<?php echo $webName ?>/img/managing_committee/<?php echo $row['Picture'] ?>" alt="" width="200px" height="200px" />
                         </div>
                         <p>
-                        <h4>মোঃ আকবর হোসেন</h4>
+                        <h4><?php echo $row['Name'] ?></h4>
                         <h6>সভাপতি</h6>
-                        <h6>ভাইঘাট উচ্চ বিদ্যালয়</h6>
+                        <h6><?php echo $schoolName_bn ?></h6>
                         </p>
                     </div>
 
@@ -29,7 +41,7 @@
                         <center>
                             <div class="fb-page" data-href="https://web.facebook.com/bhs.tgl.bd" data-width="255px" data-height="auto">
                                 <blockquote class="fb-xfbml-parse-ignore">
-                                    <a href="https://web.facebook.com/bhs.tgl.bd">Bhaighat High School</a>
+                                    <a href="https://web.facebook.com/bhs.tgl.bd"><?php echo $schoolName ?></a>
                                 </blockquote>
                             </div>
                         </center>

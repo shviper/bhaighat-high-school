@@ -7,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $Address = $_POST['Address'];
     $Mobile_Number = $_POST['Mobile_Number'];
     $Email = $_POST['Email'];
+    $password = $_POST['password'];
     $join_date = $_POST['join_date'];
     $image = $_FILES['image']['name'];
 
@@ -31,8 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     move_uploaded_file($tmp_image, $folder . $image);
-    $sql = "INSERT INTO teacher (Name,Designation,Educational_Qualifications,Address,Mobile_Number,Email,join_date,Picture) VALUES (
-        '$Name','$Designation','$Educational_Qualifications','$Address','$Mobile_Number','$Email','$join_date','$image')";
+    $sql = "INSERT INTO teacher (Name,Designation,Educational_Qualifications,Address,Mobile_Number,Email,password,join_date,Picture) VALUES (
+        '$Name','$Designation','$Educational_Qualifications','$Address','$Mobile_Number','$Email','$password','$join_date','$image')";
     if (mysqli_query($conn, $sql)) {
         echo "Teacher Data Added successfully";
     } else {

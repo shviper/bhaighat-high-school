@@ -70,7 +70,7 @@ label {
   color: #52565e;
   height: 50px;
   font-weight: bolder;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
 }
 .single-row + input {
   margin: 0 10px;

@@ -1,375 +1,792 @@
-<?php include './auth/islogin.php';
-
-include '../config/database.php';
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- PAGE TITLE HERE -->
-  <title>Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      -webkit-text-size-adjust: none;
+    }
 
-  <link href="vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet" />
-  <link rel="stylesheet" href="vendor/nouislider/nouislider.min.css" />
-  <!-- Style css -->
-  <link href="css/style.css" rel="stylesheet" />
-  <link href="css/style2.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- <script src="https://cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script> -->
-  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
+    html,
+    body {
+      height: 100%;
+      overflow: hidden;
+    }
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    body {
+      padding: 0;
+      margin: 0;
+      background: #181828;
+      font-size: 14px;
+      line-height: 1;
+    }
 
+    label {
+      cursor: pointer;
+    }
+
+    a {
+      margin: 0;
+      padding: 0;
+      vertical-align: baseline;
+      background: transparent;
+      text-decoration: none;
+      color: #000;
+    }
+
+    input,
+    select,
+    button,
+    textarea {
+      margin: 0;
+      font-size: 100%;
+    }
+
+    html,
+    div,
+    span,
+    applet,
+    object,
+    iframe,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    blockquote,
+    pre,
+    a,
+    abbr,
+    acronym,
+    address,
+    big,
+    cite,
+    code,
+    del,
+    dfn,
+    em,
+    font,
+    img,
+    ins,
+    kbd,
+    q,
+    s,
+    samp,
+    small,
+    strike,
+    strong,
+    sub,
+    sup,
+    tt,
+    var,
+    b,
+    u,
+    i,
+    center,
+    dl,
+    dt,
+    dd,
+    ol,
+    ul,
+    li,
+    fieldset,
+    form,
+    label,
+    legend,
+    table,
+    caption,
+    tbody,
+    tfoot,
+    thead,
+    tr,
+    th,
+    td,
+    input {
+      border: 0;
+      outline: 0;
+      font-size: 100%;
+      vertical-align: baseline;
+      background: transparent;
+    }
+
+    .top-header:before {
+      background-image: url(https://1.bp.blogspot.com/-gxsOcYWghHA/Xp_izTh4sFI/AAAAAAAAU8s/y637Fwg99qAuzW9na_NT_uApny8Vce95gCEwYBhgL/s1600/header-footer-gradient-bg.png);
+    }
+
+    .top-header:before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 4px;
+      background-repeat: repeat-x;
+      background-size: contain;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0.5;
+    }
+
+    .starsec {
+      content: " ";
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: transparent;
+      box-shadow: 571px 173px #00bcd4, 1732px 143px #00bcd4,
+        1745px 454px #ff5722, 234px 784px #00bcd4, 1793px 1123px #ff9800,
+        1076px 504px #03a9f4, 633px 601px #ff5722, 350px 630px #ffeb3b,
+        1164px 782px #00bcd4, 76px 690px #3f51b5, 1825px 701px #cddc39,
+        1646px 578px #ffeb3b, 544px 293px #2196f3, 445px 1061px #673ab7,
+        928px 47px #00bcd4, 168px 1410px #8bc34a, 777px 782px #9c27b0,
+        1235px 1941px #9c27b0, 104px 1690px #8bc34a, 1167px 1338px #e91e63,
+        345px 1652px #009688, 1682px 1196px #f44336, 1995px 494px #8bc34a,
+        428px 798px #ff5722, 340px 1623px #f44336, 605px 349px #9c27b0,
+        1339px 1344px #673ab7, 1102px 1745px #3f51b5, 1592px 1676px #2196f3,
+        419px 1024px #ff9800, 630px 1033px #4caf50, 1995px 1644px #00bcd4,
+        1092px 712px #9c27b0, 1355px 606px #f44336, 622px 1881px #cddc39,
+        1481px 621px #9e9e9e, 19px 1348px #8bc34a, 864px 1780px #e91e63,
+        442px 1136px #2196f3, 67px 712px #ff5722, 89px 1406px #f44336,
+        275px 321px #009688, 592px 630px #e91e63, 1012px 1690px #9c27b0,
+        1749px 23px #673ab7, 94px 1542px #ffeb3b, 1201px 1657px #3f51b5,
+        1505px 692px #2196f3, 1799px 601px #03a9f4, 656px 811px #00bcd4,
+        701px 597px #00bcd4, 1202px 46px #ff5722, 890px 569px #ff5722,
+        1613px 813px #2196f3, 223px 252px #ff9800, 983px 1093px #f44336,
+        726px 1029px #ffc107, 1764px 778px #cddc39, 622px 1643px #f44336,
+        174px 1559px #673ab7, 212px 517px #00bcd4, 340px 505px #fff,
+        1700px 39px #fff, 1768px 516px #f44336, 849px 391px #ff9800,
+        228px 1824px #fff, 1119px 1680px #ffc107, 812px 1480px #3f51b5,
+        1438px 1585px #cddc39, 137px 1397px #fff, 1080px 456px #673ab7,
+        1208px 1437px #03a9f4, 857px 281px #f44336, 1254px 1306px #cddc39,
+        987px 990px #4caf50, 1655px 911px #00bcd4, 1102px 1216px #ff5722,
+        1807px 1044px #fff, 660px 435px #03a9f4, 299px 678px #4caf50,
+        1193px 115px #ff9800, 918px 290px #cddc39, 1447px 1422px #ffeb3b,
+        91px 1273px #9c27b0, 108px 223px #ffeb3b, 146px 754px #00bcd4,
+        461px 1446px #ff5722, 1004px 391px #673ab7, 1529px 516px #f44336,
+        1206px 845px #cddc39, 347px 583px #009688, 1102px 1332px #f44336,
+        709px 1756px #00bcd4, 1972px 248px #fff, 1669px 1344px #ff5722,
+        1132px 406px #f44336, 320px 1076px #cddc39, 126px 943px #ffeb3b,
+        263px 604px #ff5722, 1546px 692px #f44336;
+      animation: animStar 150s linear infinite;
+    }
+
+    .starthird {
+      content: " ";
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: transparent;
+      box-shadow: 571px 173px #00bcd4, 1732px 143px #00bcd4,
+        1745px 454px #ff5722, 234px 784px #00bcd4, 1793px 1123px #ff9800,
+        1076px 504px #03a9f4, 633px 601px #ff5722, 350px 630px #ffeb3b,
+        1164px 782px #00bcd4, 76px 690px #3f51b5, 1825px 701px #cddc39,
+        1646px 578px #ffeb3b, 544px 293px #2196f3, 445px 1061px #673ab7,
+        928px 47px #00bcd4, 168px 1410px #8bc34a, 777px 782px #9c27b0,
+        1235px 1941px #9c27b0, 104px 1690px #8bc34a, 1167px 1338px #e91e63,
+        345px 1652px #009688, 1682px 1196px #f44336, 1995px 494px #8bc34a,
+        428px 798px #ff5722, 340px 1623px #f44336, 605px 349px #9c27b0,
+        1339px 1344px #673ab7, 1102px 1745px #3f51b5, 1592px 1676px #2196f3,
+        419px 1024px #ff9800, 630px 1033px #4caf50, 1995px 1644px #00bcd4,
+        1092px 712px #9c27b0, 1355px 606px #f44336, 622px 1881px #cddc39,
+        1481px 621px #9e9e9e, 19px 1348px #8bc34a, 864px 1780px #e91e63,
+        442px 1136px #2196f3, 67px 712px #ff5722, 89px 1406px #f44336,
+        275px 321px #009688, 592px 630px #e91e63, 1012px 1690px #9c27b0,
+        1749px 23px #673ab7, 94px 1542px #ffeb3b, 1201px 1657px #3f51b5,
+        1505px 692px #2196f3, 1799px 601px #03a9f4, 656px 811px #00bcd4,
+        701px 597px #00bcd4, 1202px 46px #ff5722, 890px 569px #ff5722,
+        1613px 813px #2196f3, 223px 252px #ff9800, 983px 1093px #f44336,
+        726px 1029px #ffc107, 1764px 778px #cddc39, 622px 1643px #f44336,
+        174px 1559px #673ab7, 212px 517px #00bcd4, 340px 505px #fff,
+        1700px 39px #fff, 1768px 516px #f44336, 849px 391px #ff9800,
+        228px 1824px #fff, 1119px 1680px #ffc107, 812px 1480px #3f51b5,
+        1438px 1585px #cddc39, 137px 1397px #fff, 1080px 456px #673ab7,
+        1208px 1437px #03a9f4, 857px 281px #f44336, 1254px 1306px #cddc39,
+        987px 990px #4caf50, 1655px 911px #00bcd4, 1102px 1216px #ff5722,
+        1807px 1044px #fff, 660px 435px #03a9f4, 299px 678px #4caf50,
+        1193px 115px #ff9800, 918px 290px #cddc39, 1447px 1422px #ffeb3b,
+        91px 1273px #9c27b0, 108px 223px #ffeb3b, 146px 754px #00bcd4,
+        461px 1446px #ff5722, 1004px 391px #673ab7, 1529px 516px #f44336,
+        1206px 845px #cddc39, 347px 583px #009688, 1102px 1332px #f44336,
+        709px 1756px #00bcd4, 1972px 248px #fff, 1669px 1344px #ff5722,
+        1132px 406px #f44336, 320px 1076px #cddc39, 126px 943px #ffeb3b,
+        263px 604px #ff5722, 1546px 692px #f44336;
+      animation: animStar 10s linear infinite;
+    }
+
+    .starfourth {
+      content: " ";
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: transparent;
+      box-shadow: 571px 173px #00bcd4, 1732px 143px #00bcd4,
+        1745px 454px #ff5722, 234px 784px #00bcd4, 1793px 1123px #ff9800,
+        1076px 504px #03a9f4, 633px 601px #ff5722, 350px 630px #ffeb3b,
+        1164px 782px #00bcd4, 76px 690px #3f51b5, 1825px 701px #cddc39,
+        1646px 578px #ffeb3b, 544px 293px #2196f3, 445px 1061px #673ab7,
+        928px 47px #00bcd4, 168px 1410px #8bc34a, 777px 782px #9c27b0,
+        1235px 1941px #9c27b0, 104px 1690px #8bc34a, 1167px 1338px #e91e63,
+        345px 1652px #009688, 1682px 1196px #f44336, 1995px 494px #8bc34a,
+        428px 798px #ff5722, 340px 1623px #f44336, 605px 349px #9c27b0,
+        1339px 1344px #673ab7, 1102px 1745px #3f51b5, 1592px 1676px #2196f3,
+        419px 1024px #ff9800, 630px 1033px #4caf50, 1995px 1644px #00bcd4,
+        1092px 712px #9c27b0, 1355px 606px #f44336, 622px 1881px #cddc39,
+        1481px 621px #9e9e9e, 19px 1348px #8bc34a, 864px 1780px #e91e63,
+        442px 1136px #2196f3, 67px 712px #ff5722, 89px 1406px #f44336,
+        275px 321px #009688, 592px 630px #e91e63, 1012px 1690px #9c27b0,
+        1749px 23px #673ab7, 94px 1542px #ffeb3b, 1201px 1657px #3f51b5,
+        1505px 692px #2196f3, 1799px 601px #03a9f4, 656px 811px #00bcd4,
+        701px 597px #00bcd4, 1202px 46px #ff5722, 890px 569px #ff5722,
+        1613px 813px #2196f3, 223px 252px #ff9800, 983px 1093px #f44336,
+        726px 1029px #ffc107, 1764px 778px #cddc39, 622px 1643px #f44336,
+        174px 1559px #673ab7, 212px 517px #00bcd4, 340px 505px #fff,
+        1700px 39px #fff, 1768px 516px #f44336, 849px 391px #ff9800,
+        228px 1824px #fff, 1119px 1680px #ffc107, 812px 1480px #3f51b5,
+        1438px 1585px #cddc39, 137px 1397px #fff, 1080px 456px #673ab7,
+        1208px 1437px #03a9f4, 857px 281px #f44336, 1254px 1306px #cddc39,
+        987px 990px #4caf50, 1655px 911px #00bcd4, 1102px 1216px #ff5722,
+        1807px 1044px #fff, 660px 435px #03a9f4, 299px 678px #4caf50,
+        1193px 115px #ff9800, 918px 290px #cddc39, 1447px 1422px #ffeb3b,
+        91px 1273px #9c27b0, 108px 223px #ffeb3b, 146px 754px #00bcd4,
+        461px 1446px #ff5722, 1004px 391px #673ab7, 1529px 516px #f44336,
+        1206px 845px #cddc39, 347px 583px #009688, 1102px 1332px #f44336,
+        709px 1756px #00bcd4, 1972px 248px #fff, 1669px 1344px #ff5722,
+        1132px 406px #f44336, 320px 1076px #cddc39, 126px 943px #ffeb3b,
+        263px 604px #ff5722, 1546px 692px #f44336;
+      animation: animStar 50s linear infinite;
+    }
+
+    .starfifth {
+      content: " ";
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      background: transparent;
+      box-shadow: 571px 173px #00bcd4, 1732px 143px #00bcd4,
+        1745px 454px #ff5722, 234px 784px #00bcd4, 1793px 1123px #ff9800,
+        1076px 504px #03a9f4, 633px 601px #ff5722, 350px 630px #ffeb3b,
+        1164px 782px #00bcd4, 76px 690px #3f51b5, 1825px 701px #cddc39,
+        1646px 578px #ffeb3b, 544px 293px #2196f3, 445px 1061px #673ab7,
+        928px 47px #00bcd4, 168px 1410px #8bc34a, 777px 782px #9c27b0,
+        1235px 1941px #9c27b0, 104px 1690px #8bc34a, 1167px 1338px #e91e63,
+        345px 1652px #009688, 1682px 1196px #f44336, 1995px 494px #8bc34a,
+        428px 798px #ff5722, 340px 1623px #f44336, 605px 349px #9c27b0,
+        1339px 1344px #673ab7, 1102px 1745px #3f51b5, 1592px 1676px #2196f3,
+        419px 1024px #ff9800, 630px 1033px #4caf50, 1995px 1644px #00bcd4,
+        1092px 712px #9c27b0, 1355px 606px #f44336, 622px 1881px #cddc39,
+        1481px 621px #9e9e9e, 19px 1348px #8bc34a, 864px 1780px #e91e63,
+        442px 1136px #2196f3, 67px 712px #ff5722, 89px 1406px #f44336,
+        275px 321px #009688, 592px 630px #e91e63, 1012px 1690px #9c27b0,
+        1749px 23px #673ab7, 94px 1542px #ffeb3b, 1201px 1657px #3f51b5,
+        1505px 692px #2196f3, 1799px 601px #03a9f4, 656px 811px #00bcd4,
+        701px 597px #00bcd4, 1202px 46px #ff5722, 890px 569px #ff5722,
+        1613px 813px #2196f3, 223px 252px #ff9800, 983px 1093px #f44336,
+        726px 1029px #ffc107, 1764px 778px #cddc39, 622px 1643px #f44336,
+        174px 1559px #673ab7, 212px 517px #00bcd4, 340px 505px #fff,
+        1700px 39px #fff, 1768px 516px #f44336, 849px 391px #ff9800,
+        228px 1824px #fff, 1119px 1680px #ffc107, 812px 1480px #3f51b5,
+        1438px 1585px #cddc39, 137px 1397px #fff, 1080px 456px #673ab7,
+        1208px 1437px #03a9f4, 857px 281px #f44336, 1254px 1306px #cddc39,
+        987px 990px #4caf50, 1655px 911px #00bcd4, 1102px 1216px #ff5722,
+        1807px 1044px #fff, 660px 435px #03a9f4, 299px 678px #4caf50,
+        1193px 115px #ff9800, 918px 290px #cddc39, 1447px 1422px #ffeb3b,
+        91px 1273px #9c27b0, 108px 223px #ffeb3b, 146px 754px #00bcd4,
+        461px 1446px #ff5722, 1004px 391px #673ab7, 1529px 516px #f44336,
+        1206px 845px #cddc39, 347px 583px #009688, 1102px 1332px #f44336,
+        709px 1756px #00bcd4, 1972px 248px #fff, 1669px 1344px #ff5722,
+        1132px 406px #f44336, 320px 1076px #cddc39, 126px 943px #ffeb3b,
+        263px 604px #ff5722, 1546px 692px #f44336;
+      animation: animStar 80s linear infinite;
+    }
+
+    @keyframes animStar {
+      0% {
+        transform: translateY(0px);
+      }
+
+      100% {
+        transform: translateY(-2000px);
+      }
+    }
+
+    button {
+      border: none;
+      padding: 0;
+      font-size: 0;
+      line-height: 0;
+      background: none;
+      cursor: pointer;
+    }
+
+    :focus {
+      outline: 0;
+    }
+
+    .clearfix:before,
+    .clearfix:after {
+      content: "\0020";
+      display: block;
+      height: 0;
+      visibility: hidden;
+    }
+
+    .clearfix:after {
+      clear: both;
+    }
+
+    .clearfix {
+      zoom: 1;
+    }
+
+    /* 1. END BODY */
+    /***********************************/
+
+    /***********************************
+			/* 2. CONTENT */
+    /***********************************/
+    /* 2.1. Section error */
+    .error {
+      min-height: 100vh;
+      position: relative;
+      padding: 240px 0;
+      box-sizing: border-box;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      margin-top: 70px;
+    }
+
+    .error__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .error__content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+
+    .error__message {
+      text-align: center;
+      color: #181828;
+    }
+
+    .message__title {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      font-size: 5.6rem;
+      padding-bottom: 40px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .message__text {
+      font-family: "Montserrat", sans-serif;
+      line-height: 42px;
+      font-size: 18px;
+      padding: 0 60px;
+      max-width: 680px;
+      margin: auto;
+    }
+
+    .error__nav {
+      max-width: 600px;
+      margin: 40px auto 0;
+      text-align: center;
+    }
+
+    .e-nav__form {
+      position: relative;
+      height: 45px;
+      overflow: hidden;
+      width: 170px;
+      display: inline-block;
+      vertical-align: top;
+      border: 1px solid #212121;
+      padding-left: 10px;
+      padding-right: 46px;
+    }
+
+    .e-nav__icon {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+      color: #212121;
+      -webkit-transition: color 0.25s ease;
+      transition: color 0.25s ease;
+    }
+
+    .e-nav__link {
+      height: 45px;
+      line-height: 45px;
+      width: 170px;
+      display: inline-block;
+      vertical-align: top;
+      margin: 0 15px;
+      border: 1px solid #181828;
+      color: #181828;
+      text-decoration: none;
+      font-family: "Montserrat", sans-serif;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .e-nav__link:before {
+      content: "";
+      height: 200px;
+      background: #212121;
+      position: absolute;
+      top: 70px;
+      right: 70px;
+      width: 260px;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      -webkit-transform: rotate(50deg);
+      transform: rotate(50deg);
+    }
+
+    .e-nav__link:after {
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      z-index: 999;
+      position: relative;
+    }
+
+    .e-nav__link:after {
+      content: "Home Page";
+    }
+
+    .e-nav__link:hover:before {
+      top: -60px;
+      right: -50px;
+    }
+
+    .e-nav__link:hover {
+      color: #fff;
+    }
+
+    .e-nav__link:nth-child(2):hover:after {
+      color: #fff;
+    }
+
+    /* 2.1. END Section Error */
+
+    /* 2.2. Social style */
+    .error__social {
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+      left: 20px;
+      z-index: 10;
+    }
+
+    .e-social__list {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+
+    .e-social__icon {
+      padding-bottom: 30px;
+    }
+
+    .e-social__icon:last-child {
+      padding-bottom: 0;
+    }
+
+    .e-social__link {
+      color: #fff;
+      -webkit-transition: all 0.25s ease;
+      transition: all 0.25s ease;
+      display: block;
+    }
+
+    .e-social__link:hover {
+      opacity: 0.7;
+    }
+
+    /* 2.2. END Social style */
+
+    /* 2.3. Lamp */
+    .lamp {
+      position: absolute;
+      left: 0px;
+      right: 0px;
+      top: 0px;
+      margin: 0px auto;
+      width: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform-origin: center top;
+      animation-timing-function: cubic-bezier(0.6, 0, 0.38, 1);
+      animation: move 5.1s infinite;
+    }
+
+    @keyframes move {
+      0% {
+        transform: rotate(40deg);
+      }
+
+      50% {
+        transform: rotate(-40deg);
+      }
+
+      100% {
+        transform: rotate(40deg);
+      }
+    }
+
+    .cable {
+      width: 8px;
+      height: 248px;
+      background-image: linear-gradient(rgb(32 148 218 / 70%), rgb(193 65 25)),
+        linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+    }
+
+    .cover {
+      width: 200px;
+      height: 80px;
+      background: #0bd5e8;
+      border-top-left-radius: 50%;
+      border-top-right-radius: 50%;
+      position: relative;
+      z-index: 200;
+    }
+
+    .in-cover {
+      width: 100%;
+      max-width: 200px;
+      height: 20px;
+      border-radius: 100%;
+      background: #08ffff;
+      position: absolute;
+      left: 0px;
+      right: 0px;
+      margin: 0px auto;
+      bottom: -9px;
+      z-index: 100;
+    }
+
+    .in-cover .bulb {
+      width: 50px;
+      height: 50px;
+      background-color: #08fffa;
+      border-radius: 50%;
+      position: absolute;
+      left: 0px;
+      right: 0px;
+      bottom: -20px;
+      margin: 0px auto;
+      -webkit-box-shadow: 0 0 15px 7px rgba(0, 255, 255, 0.8),
+        0 0 40px 25px rgba(0, 255, 255, 0.5),
+        -75px 0 30px 15px rgba(0, 255, 255, 0.2);
+      box-shadow: 0 0 25px 7px rgb(127 255 255 / 80%),
+        0 0 64px 47px rgba(0, 255, 255, 0.5),
+        0px 0 30px 15px rgba(0, 255, 255, 0.2);
+    }
+
+    .light {
+      width: 200px;
+      height: 0px;
+      border-bottom: 900px solid rgb(44 255 255 / 24%);
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      position: absolute;
+      left: 0px;
+      right: 0px;
+      top: 270px;
+      margin: 0px auto;
+      z-index: 1;
+      border-radius: 90px 90px 0px 0px;
+    }
+
+    .error {
+      overflow: hidden;
+      max-height: 100vh;
+    }
+
+    @media (max-width: 1400px) {
+      .lamp {
+        zoom: 0.5;
+      }
+
+      .error__content {
+        top: 55%;
+      }
+
+      .message__title {
+        font-size: 3.5rem;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .message__title {
+        font-size: 34px;
+      }
+
+      .error__content {
+        top: 55%;
+      }
+    }
+
+    @media (max-width: 950px) {
+      .lamp__wrap {
+        max-height: 100vh;
+        overflow: hidden;
+        max-width: 100vw;
+      }
+
+      .error__social {
+        bottom: 30px;
+        top: auto;
+        transform: none;
+        width: 100%;
+        position: fixed;
+        left: 0;
+      }
+
+      .e-social__icon {
+        display: inline-block;
+        padding-right: 30px;
+      }
+
+      .e-social__icon:last-child {
+        padding-right: 0;
+      }
+
+      .e-social__icon {
+        padding-bottom: 0;
+      }
+    }
+
+    @media (max-width: 750px) {
+
+      body,
+      html {
+        max-height: 100vh;
+      }
+
+      .error__content {
+        position: static;
+        margin: 0 auto;
+        transform: none;
+        padding-top: 300px;
+      }
+
+      .error {
+        padding-top: 0;
+        padding-bottom: 100px;
+        height: 100vh;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .message__title {
+        font-size: 36px;
+        padding-bottom: 20px;
+      }
+
+      .message__text {
+        font-size: 16px;
+        line-height: 2;
+        padding-right: 20px;
+        padding-left: 20px;
+      }
+
+      .lamp {
+        zoom: 0.6;
+      }
+
+      .error__content {
+        padding-top: 180px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .message__title {
+        font-size: 30px;
+      }
+
+      .message__text {
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 15px;
+      }
+
+      .error__nav {
+        margin-top: 20px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <!--*******************
-        Preloader start
-    ********************-->
-  <div id="preloader">
-    <div class="waviy">
-      <span style="--i: 1">L</span>
-      <span style="--i: 2">o</span>
-      <span style="--i: 3">a</span>
-      <span style="--i: 4">d</span>
-      <span style="--i: 5">i</span>
-      <span style="--i: 6">n</span>
-      <span style="--i: 7">g</span>
-      <span style="--i: 8">.</span>
-      <span style="--i: 9">.</span>
-      <span style="--i: 10">.</span>
+  <a href="#" target="_blank">
+    <header class="top-header"></header>
+
+    <!--dust particel-->
+    <div>
+      <div class="starsec"></div>
+      <div class="starthird"></div>
+      <div class="starfourth"></div>
+      <div class="starfifth"></div>
     </div>
-  </div>
-  <!--*******************
-        Preloader end
-    ********************-->
+    <!--Dust particle end--->
 
-  <!--**********************************
-        Main wrapper start
-    ***********************************-->
-  <div id="main-wrapper">
-    <!--**********************************
-            Nav header start
-        ***********************************-->
-    <?php include './components/nav_header.php'; ?>
-    <!--**********************************
-            Nav header end
-        ***********************************-->
-
-    <!--**********************************
-            Header start
-        ***********************************-->
-    <?php include './components/header.php'; ?>
-    <!--**********************************
-            Header end ti-comment-alt
-        ***********************************-->
-
-    <!--**********************************
-            Sidebar start
-        ***********************************-->
-    <?php include './components/sidebar.php'; ?>
-    <!--**********************************
-            Sidebar end
-        ***********************************-->
-
-    <!--**********************************
-            Content body start
-        ***********************************-->
-    <div class="content-body">
-      <!-- row -->
-      <div class="container-fluid">
-        <div class="row invoice-card-row">
-          <div class="col-xl-3 col-xxl-3 col-sm-6">
-            <div class="card bg-warning invoice-card">
-              <div class="card-body d-flex">
-                <div class="icon me-3">
-                  <svg height="33px" width="32px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve">
-                    <style type="text/css">
-                      .st0 {
-                        fill: #000000;
-                      }
-                    </style>
-                    <g>
-                      <path class="st0" d="M366.042,378.266c-26.458-9.72-49.309-18.113-51.793-42.026c-1.149-11.024-0.214-23.982,2.702-37.507
-                      c9.144-9.798,16.72-23.936,24.484-45.691c15.458-5.955,25.31-19.192,30.109-40.442c2.461-10.885-1.058-22.073-9.655-30.807
-                      c0.773-13.206,0.095-13.928-0.402-14.456l-0.542-0.536H151.497v14.914c-9.897,9.115-13.61,19.503-11.038,30.885
-                      c4.794,21.242,14.648,34.48,30.12,40.442c7.762,21.754,15.332,35.885,24.464,45.675c2.06,9.518,4.158,23.61,2.71,37.523
-                      c-2.484,23.913-25.336,32.306-51.795,42.026c-36.32,13.338-77.484,28.462-77.484,88.641C68.474,485.634,126.653,512,256,512
-                      c129.347,0,187.526-26.366,187.526-45.093C443.526,406.729,402.362,391.605,366.042,378.266z M233.908,484.578L203.021,359.12
-                      l37.47,15.598l-2.302,20.66l6.572-0.148L233.908,484.578z M277.101,395.378l-2.302-20.66l37.47-15.598l-30.887,125.458
-                      l-10.854-89.348L277.101,395.378z" />
-                      <path class="st0" d="M91.083,82.779l54.864,24.13v36.397h222.66v-36.397l22.395-9.852v51.234c-4.75,0.753-8.389,4.728-8.389,9.495
-                      c0,4.146,2.741,7.74,6.704,9.053l-6.378,40.217c-0.421,2.663,0.34,5.357,2.081,7.392c1.739,2.042,4.28,3.214,6.972,3.214h16.792
-                      c2.692,0,5.233-1.172,6.968-3.214c1.745-2.034,2.506-4.728,2.085-7.392l-6.374-40.217c3.969-1.312,6.714-4.907,6.714-9.053
-                      c0-4.767-3.643-8.742-8.397-9.495V88.804l13.686-6.017c2.696-1.172,4.439-3.789,4.439-6.654c0-2.85-1.739-5.458-4.433-6.646
-                      L272.931,3.284C267.987,1.102,262.72,0,257.273,0c-5.446,0-10.712,1.102-15.652,3.284L91.081,69.487
-                      c-2.692,1.188-4.431,3.796-4.431,6.646C86.649,79.006,88.392,81.614,91.083,82.779z" />
-                    </g>
-                  </svg>
-                </div>
-                <div>
-                  <h2 class="text-white invoice-num" id="students"></h2>
-                  <span class="text-white fs-18">Total Students</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-3 col-xxl-3 col-sm-6">
-            <div class="card bg-success invoice-card">
-              <div class="card-body d-flex">
-                <div class="icon me-3">
-                  <svg height="33px" width="32px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve">
-                    <style type="text/css">
-                      .st0 {
-                        fill: #000000;
-                      }
-                    </style>
-                    <g>
-                      <path class="st0" d="M366.042,378.266c-26.458-9.72-49.309-18.113-51.793-42.026c-1.149-11.024-0.214-23.982,2.702-37.507
-                      c9.144-9.798,16.72-23.936,24.484-45.691c15.458-5.955,25.31-19.192,30.109-40.442c2.461-10.885-1.058-22.073-9.655-30.807
-                      c0.773-13.206,0.095-13.928-0.402-14.456l-0.542-0.536H151.497v14.914c-9.897,9.115-13.61,19.503-11.038,30.885
-                      c4.794,21.242,14.648,34.48,30.12,40.442c7.762,21.754,15.332,35.885,24.464,45.675c2.06,9.518,4.158,23.61,2.71,37.523
-                      c-2.484,23.913-25.336,32.306-51.795,42.026c-36.32,13.338-77.484,28.462-77.484,88.641C68.474,485.634,126.653,512,256,512
-                      c129.347,0,187.526-26.366,187.526-45.093C443.526,406.729,402.362,391.605,366.042,378.266z M233.908,484.578L203.021,359.12
-                      l37.47,15.598l-2.302,20.66l6.572-0.148L233.908,484.578z M277.101,395.378l-2.302-20.66l37.47-15.598l-30.887,125.458
-                      l-10.854-89.348L277.101,395.378z" />
-                      <path class="st0" d="M91.083,82.779l54.864,24.13v36.397h222.66v-36.397l22.395-9.852v51.234c-4.75,0.753-8.389,4.728-8.389,9.495
-                      c0,4.146,2.741,7.74,6.704,9.053l-6.378,40.217c-0.421,2.663,0.34,5.357,2.081,7.392c1.739,2.042,4.28,3.214,6.972,3.214h16.792
-                      c2.692,0,5.233-1.172,6.968-3.214c1.745-2.034,2.506-4.728,2.085-7.392l-6.374-40.217c3.969-1.312,6.714-4.907,6.714-9.053
-                      c0-4.767-3.643-8.742-8.397-9.495V88.804l13.686-6.017c2.696-1.172,4.439-3.789,4.439-6.654c0-2.85-1.739-5.458-4.433-6.646
-                      L272.931,3.284C267.987,1.102,262.72,0,257.273,0c-5.446,0-10.712,1.102-15.652,3.284L91.081,69.487
-                      c-2.692,1.188-4.431,3.796-4.431,6.646C86.649,79.006,88.392,81.614,91.083,82.779z" />
-                    </g>
-                  </svg>
-                </div>
-                <div>
-                  <h2 class="text-white invoice-num" id="teacher_total"></h2>
-                  <span class="text-white fs-18">Total Teachers</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-3 col-xxl-3 col-sm-6">
-            <div class="card bg-info invoice-card">
-              <div class="card-body d-flex">
-                <div class="icon me-3">
-                  <svg fill="#000000" width="33px" height="33px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                    <title>notice</title>
-                    <path d="M15.5 3.5c-7.18 0-13 5.82-13 13s5.82 13 13 13 13-5.82 13-13-5.82-13-13-13zM15.5 23.875c-0.829 0-1.5-0.672-1.5-1.5s0.671-1.5 1.5-1.5c0.828 0 1.5 0.672 1.5 1.5s-0.672 1.5-1.5 1.5zM17 17.375c0 0.828-0.672 1.5-1.5 1.5-0.829 0-1.5-0.672-1.5-1.5v-7c0-0.829 0.671-1.5 1.5-1.5 0.828 0 1.5 0.671 1.5 1.5v7z"></path>
-                  </svg>
-                </div>
-                <div>
-                  <h2 class="text-white invoice-num" id="notice_show"></h2>
-                  <span class="text-white fs-18">Total Notice</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-3 col-xxl-3 col-sm-6">
-            <div class="card bg-secondary invoice-card">
-              <div class="card-body d-flex">
-                <div class="icon me-3">
-                  <svg height="32px" width="32px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 502.664 502.664" xml:space="preserve">
-                    <g>
-                      <g>
-                        <path style="fill:#010002;" d="M235.704,0c0,16.976,0,59.988,0,77.008c10.98,0,20.255,0,31.234,0c0-17.019,0-60.031,0-77.008
-                          C255.959,0,246.662,0,235.704,0z M89.476,73.449c12.036,12.036,42.494,42.494,54.509,54.488
-                          c7.765-7.744,14.345-14.345,22.132-22.045c-12.036-12.058-42.494-42.516-54.531-54.553
-                          C103.842,59.104,97.241,65.705,89.476,73.449z M336.569,105.869c7.744,7.701,14.345,14.301,22.11,22.045
-                          c12.036-12.058,42.451-42.473,54.488-54.488c-7.744-7.722-14.366-14.28-22.11-22.088
-                          C379.042,63.375,348.605,93.833,336.569,105.869z M387.519,197.524c0,11.023,0,20.298,0,31.299c16.998,0,60.053,0,77.051,0
-                          c0-11.001,0-20.277,0-31.299C447.572,197.524,404.517,197.524,387.519,197.524z M38.116,197.524
-                          c0,11.023-0.022,20.298-0.022,31.256c16.998,0.022,60.075,0.022,77.072,0.065c0-11.001,0-20.277,0-31.299
-                          C98.169,197.524,55.092,197.524,38.116,197.524z" />
-                        <path style="fill:#010002;" d="M320.11,324.748H182.618c-24.548,0-44.695,22.585-44.695,50.195v127.721h226.903V374.943
-                          C364.805,347.333,344.701,324.748,320.11,324.748z" />
-                        <path style="fill:#010002;" d="M251.278,302.595c43.055,0,77.763-34.729,77.763-77.612c0-42.926-34.707-77.676-77.763-77.676
-                          c-42.818,0-77.525,34.707-77.525,77.676C173.774,267.844,208.438,302.595,251.278,302.595z" />
-                      </g>
-                      <g>
-                      </g>
-                      <g>
-                      </g>
-                      <g>
-                      </g>
-                      <g>
-                      </g>
-                      <g>
-                      </g>
-                      <g>
-                      </g>
-                      <g>
-                      </g>
-                      <g>
-                      </g>
-                      <g>
-                      </g>
-                      <g>
-                      </g>
-                      <g>
-                      </g>
-                      <g>
-                      </g>
-                      <g>
-                      </g>
-                      <g>
-                      </g>
-                      <g>
-                      </g>
-                    </g>
-                  </svg>
-                </div>
-                <div>
-                  <h2 class="text-white invoice-num" id="visits"></h2>
-                  <span class="text-white fs-18">Total Visits</span>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div class="lamp__wrap">
+      <div class="lamp">
+        <div class="cable"></div>
+        <div class="cover"></div>
+        <div class="in-cover">
+          <div class="bulb"></div>
         </div>
-        <div class="row">
-          <div class="col-xl-9 col-xxl-12">
-
-            <div class="card">
-
-              <div class="card-body">
-
-                <div class="row align-items-center">
-
-                  <div class="contact-container">
-                    <div class="contact-left">
-                      <center>
-                        <h1>Notice</h1>
-                      </center>
-                      <form class="contact-form" id="notice">
-
-                        <div class="multiple-row">
-                          <label for="notice_Headline">Notice Headline</label>
-                          <input type="text" name="notice_Headline" placeholder="headline" class="form-in" required>
-
-                          <label for="notice Categories">Notice Categories</label>
-                          <select name="categories" class="form-in">
-                            <option value="পরীক্ষা সংক্রান্ত">পরীক্ষা সংক্রান্ত </option>
-                            <option value="ফলাফল সংক্রান্ত">ফলাফল সংক্রান্ত </option>
-                            <option value="">অন্যান্য </option>
-                          </select>
-                          <label for="notice description">Notice description</label>
-                          <textarea placeholder="notice discreption..." class="form-in" name="description" id="description"></textarea>
-                          <script>
-                            tinymce.init({
-                              selector: "#description",
-                              plugins: "advlist autolink lists link image charmap print preview hr anchor pagebreak",
-                              toolbar: "undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
-                            });
-                          </script>
-
-                          <center><button class="button" type="submit" name="submit">Publish </button></center>
-
-                        </div>
-                      </form>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-6 col-xxl-12">
-            <div class="card">
-              <div class="card-header d-block d-sm-flex border-0">
-                <div class="me-3">
-                  <h4 class="card-title mb-2">Previous Notice</h4>
-                  <!-- <span class="fs-12">Lorem ipsum dolor sit amet, consectetur</span> -->
-                </div>
-              </div>
-
-              <div id="notice_preview">
-
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="light"></div>
       </div>
     </div>
-
-
-    <script>
-      $(document).ready(function() {
-        $("#notice").submit(function(e) {
-          e.preventDefault();
-          $.ajax({
-            type: "POST",
-            url: "./data_load/notics_add.php",
-            data: $("#notice").serialize(),
-            success: function(response) {
-              alert("notice published successfully!");
-            }
-          });
-        });
-      });
-    </script>
-
-
-
-    <script>
-      $(document).ready(function() {
-        $("#notice_show").load("./data_load/notics.php");
-        $("#notice_preview").load("./data_load/notice_hading.php");
-        $("#visits").load("./data_load/visits.php");
-        $("#teacher_total").load("./data_load/teacher.php");
-        $("#students").load("./data_load/student.php");
-        $("#total_message").load("./data_load/total_message.php");
-        setInterval(function() {
-          $("#notice_show").load("./data_load/notics.php");
-          $("#notice_preview").load("./data_load/notice_hading.php");
-          $("#visits").load("./data_load/visits.php");
-          $("#teacher_total").load("./data_load/teacher.php");
-          $("#students").load("./data_load/student.php");
-          $("#total_message").load("./data_load/total_message.php");
-        }, 3000);
-      });
-    </script>
-
-
-
-    <!--**********************************
-            Content body end
-        ***********************************-->
-
-    <!--**********************************
-            Footer start
-        ***********************************-->
-    <?php include './components/footer.php'; ?>?>
-    <!--**********************************
-            Footer end
-        ***********************************-->
-  </div>
-  <!--**********************************
-        Main wrapper end
-    ***********************************-->
-
-  <!--**********************************
-        Scripts
-    ***********************************-->
-  <!-- Required vendors -->
-  <script src="vendor/global/global.min.js"></script>
-  <script src="vendor/chart.js/Chart.bundle.min.js"></script>
-  <script src="vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
-
-
-  <!-- Dashboard 1 -->
-  <script src="js/dashboard/dashboard-1.js"></script>
-
-  <script src="js/custom.min.js"></script>
-  <script src="js/dlabnav-init.js"></script>
-  <script src="js/demo.js"></script>
-  <script src="js/styleSwitcher.js"></script>
+    <!-- END Lamp -->
+    <section class="error">
+      <!-- Content -->
+      <div class="error__content">
+        <div class="error__message message">
+          <h1 class="message__title">Page Not Found</h1>
+          <p class="message__text">
+            We're sorry, the page you were looking for isn't found here. The
+            link you followed may either be broken or no longer exists. Please
+            try again, or take a look at our.
+          </p>
+        </div>
+        <div class="error__nav e-nav">
+          <a href="#" class="e-nav__link"></a>
+        </div>
+      </div>
+      <!-- END Content -->
+    </section>
+  </a>
 </body>
 
 </html>

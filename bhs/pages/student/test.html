@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <!-- Super Power Select Element -->
+    <select id="super-select">
+      <option value="">Select All</option>
+      <option value="ষষ্ঠ">ষষ্ঠ শ্রেণী</option>
+      <option value="সপ্তম">সপ্তম শ্রেণী</option>
+      <option value="অষ্টম">অষ্টম শ্রেণী</option>
+      <option value="নবম">নবম শ্রেণী</option>
+      <option value="দশম">দশম শ্রেণী</option>
+    </select>
+
+    <!-- Select Elements to be selected -->
+    <select class="class-select ষষ্ঠ">
+      <option>Option 1</option>
+      <option>Option 2</option>
+      <option>Option 3</option>
+    </select>
+    <select class="class-select ষষ্ঠ">
+      <option>Option 4</option>
+      <option>Option 5</option>
+      <option>Option 6</option>
+    </select>
+    <select class="class-select সপ্তম">
+      <option>Option 7</option>
+      <option>Option 8</option>
+      <option>Option 9</option>
+    </select>
+
+    <script>
+      // Add Event Listener to Super Select Element
+      document
+        .getElementById("super-select")
+        .addEventListener("change", function () {
+          var selectedValue = this.value;
+
+          // Loop through all the Select Elements with Class 'class-select'
+          var selectElements = document.querySelectorAll(".class-select");
+          for (var i = 0; i < selectElements.length; i++) {
+            var selectElement = selectElements[i];
+
+            // Check if the Select Element has the Selected Value as its class
+            if (selectElement.classList.contains(selectedValue)) {
+              // Select the Option with Value = ''
+              selectElement.value = "";
+
+              // Trigger the Change Event
+              var event = new Event("change");
+              selectElement.dispatchEvent(event);
+            }
+          }
+        });
+    </script>
+  </body>
+</html>

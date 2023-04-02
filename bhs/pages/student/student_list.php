@@ -25,7 +25,7 @@ if (mysqli_num_rows($student) > 0) {
                                     </a>
                                 </td>
                                 <td style="width: 93.63px;">
-                                    <a id="delete" href="delete.php?id=<?php echo $row['id'] ?>">
+                                    <a id="delete" href="delete.php?id=<?php echo $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this?')">
                                         <h6 class="fs-16 text-black font-w600 mb-0"><i class="fa-solid fa-trash"></i></h6>
                                     </a>
                                 </td>

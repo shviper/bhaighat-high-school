@@ -23,7 +23,7 @@
           </li>
           <hr>
           <li style="list-style: none;">
-            <a target="_blank" href="https://api.whatsapp.com/send?phone=01635355376&amp;text=I%27m%20interested%20in%20your%20services">সাজ্জাদ হাসান রিয়াদ </a>
+            <a target="_blank" href="https://api.whatsapp.com/send?phone=8801635355376&amp;text=I%27m%20interested%20in%20your%20services" style="text-decoration: none;">সাজ্জাদ হাসান রিয়াদ </a>
             </span>
           </li>
           <li style="list-style: none;">infinity developers</li>

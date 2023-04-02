@@ -1,6 +1,16 @@
 <?php
+
 include './auth/islogin.php';
 include '../config/database.php';
+
+$sql = "SELECT * FROM `teacher` WHERE id = '$id'";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+$Designation = $row['Designation'];
+if ($Designation == 'প্রধান শিক্ষক') {
+  header("Location: $webName/bhs/pages/result/");
+}
+
 ?>
 
 

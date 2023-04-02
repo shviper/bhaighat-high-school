@@ -173,14 +173,152 @@ include '../../../config/database.php';
                             </div>
                         </div>
                     </div>
+                    <div class="col-xl-9 col-xxl-12">
+
+                        <div class="card">
+
+                            <div class="card-body">
+
+                                <div class="row align-items-center">
+
+                                    <div class="contact-container">
+                                        <div class="contact-left">
+                                            <center>
+                                                <h1>School History</h1>
+                                            </center>
+                                            <form class="contact-form" id="history">
+
+                                                <div class="multiple-row">
+
+                                                    <?php
+                                                    $sql = "SELECT * FROM `school_history` WHERE id = 1";
+                                                    $result = mysqli_query($conn, $sql);
+                                                    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+                                                    ?>
+                                                    <textarea placeholder="notice discreption..." class="form-in" name="description" id="description"><?php echo $row['dis'] ?></textarea>
+                                                    <script>
+                                                        tinymce.init({
+                                                            selector: "#description",
+                                                            plugins: "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+                                                            toolbar: "undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+                                                        });
+                                                    </script>
+
+                                                    <center><button class="button" type="submit">Publish </button></center>
+
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-9 col-xxl-12">
+
+                        <div class="card">
+
+                            <div class="card-body">
+
+                                <div class="row align-items-center">
+
+                                    <div class="contact-container">
+                                        <div class="contact-left">
+                                            <center>
+                                                <h1>About Education</h1>
+                                            </center>
+                                            <form class="contact-form" id="about">
+
+                                                <div class="multiple-row">
+
+                                                    <?php
+                                                    $sql = "SELECT * FROM `school_history` WHERE id = 2";
+                                                    $result = mysqli_query($conn, $sql);
+                                                    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+                                                    ?>
+                                                    <textarea class="form-in" name="description" id="des"><?php echo $row['dis'] ?></textarea>
+                                                    <script>
+                                                        tinymce.init({
+                                                            selector: "#des",
+                                                            plugins: "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+                                                            toolbar: "undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+                                                        });
+                                                    </script>
+
+                                                    <center><button class="button" type="submit">Publish </button></center>
+
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-9 col-xxl-12">
+
+                        <div class="card">
+
+                            <div class="card-body">
+
+                                <div class="row align-items-center">
+
+                                    <div class="contact-container">
+                                        <div class="contact-left">
+                                            <center>
+                                                <h1>Admission Notice</h1>
+                                            </center>
+                                            <form class="contact-form" id="ad_notice" enctype="multipart/form-data">
 
 
+                                                <div class="multiple-row">
+
+                                                    <input type="file" name="image" multiple class="form-in" required>
+
+                                                    <center><button class="button" type="submit" name="submit">Publish
+                                                        </button></center>
+
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-xl-6 col-xxl-12">
                         <div class="card">
                             <div class="card-header d-block d-sm-flex border-0">
                                 <div class="me-3">
                                     <h4 class="card-title mb-2">Photo...</h4>
                                     <!-- <span class="fs-12">Lorem ipsum dolor sit amet, consectetur</span> -->
+                                </div>
+                            </div>
+
+                            <div id="list">
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-xl-6 col-xxl-12">
+                        <div class="card">
+                            <div class="card-header d-block d-sm-flex border-0">
+                                <div class="me-3">
+                                    <h4 class="card-title mb-2">Admission Notice img</h4>
+                                    <!-- <span class="fs-12">Lorem ipsum dolor sit amet, consectetur</span> -->
+                                    <?php
+                                    $sql = "SELECT * FROM `ad_notice` WHERE id = 1";
+                                    $result = mysqli_query($conn, $sql);
+                                    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+                                    ?>
+                                    <img src="<?php echo $webName ?>/img/header_img/<?php echo $row['img']; ?>" alt="" width="260px" height="auto" />
                                 </div>
                             </div>
 
@@ -204,6 +342,48 @@ include '../../../config/database.php';
                         $.ajax({
                             type: "POST",
                             url: "add.php",
+                            data: formData,
+                            processData: false,
+                            contentType: false,
+                            success: function(data) {
+                                alert(data);
+                            }
+                        });
+                    });
+                    $("#history").submit(function(e) {
+                        e.preventDefault();
+                        var formData = new FormData(this);
+                        $.ajax({
+                            type: "POST",
+                            url: "add2.php",
+                            data: formData,
+                            processData: false,
+                            contentType: false,
+                            success: function(data) {
+                                alert(data);
+                            }
+                        });
+                    });
+                    $("#about").submit(function(e) {
+                        e.preventDefault();
+                        var formData = new FormData(this);
+                        $.ajax({
+                            type: "POST",
+                            url: "add3.php",
+                            data: formData,
+                            processData: false,
+                            contentType: false,
+                            success: function(data) {
+                                alert(data);
+                            }
+                        });
+                    });
+                    $("#ad_notice").submit(function(e) {
+                        e.preventDefault();
+                        var formData = new FormData(this);
+                        $.ajax({
+                            type: "POST",
+                            url: "add4.php",
                             data: formData,
                             processData: false,
                             contentType: false,

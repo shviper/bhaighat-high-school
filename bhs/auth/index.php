@@ -13,13 +13,15 @@ if (isset($_POST['submit'])) {
     $email = mysqli_real_escape_string($conn, $email);
     $password = mysqli_real_escape_string($conn, $password);
 
-    $sql = "SELECT * FROM users WHERE email = '$email' and password = '$password'";
+    $sql = "SELECT * FROM teacher WHERE Email = '$email' and password = '$password'";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
     $count = mysqli_num_rows($result);
 
     if ($count == 1) {
         setcookie('isLogin', true, time() + (86400 * 30), '/');
+        setcookie('id', $row['Id'], time() + (86400 * 30), '/');
+        setcookie('Designation', $row['Designation'], time() + (86400 * 30), '/');
         echo
         '<div class="alert alert-success" role="alert">
         Login Success . Redirecting in dashboard...</a>.
@@ -63,7 +65,7 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
-
+    <br><br><br>
 
     <div class="content">
         <img src="<?php echo $webName ?>/img/logo/bhaighatlogo1.png">

@@ -110,12 +110,17 @@ include '../../../config/database.php';
                                                     <input type="text" name="Mobile_Number" placeholder="019000000" class="form-in" required>
                                                 </div>
                                                 <div class="single-row">
+                                                    <input type="text" name="Address" id="Address" placeholder="Address" class="form-in" required>
 
-                                                    <input type="Email" name="Email" id="Email" placeholder="example@email.com" class="form-in" required style="text-transform: lowercase;">
                                                     <input type="date" name="join_date" class="form-in" required>
                                                 </div>
+                                                <div class="single-row">
+                                                    <input type="Email" name="Email" id="Email" placeholder="example@email.com" class="form-in" required style="text-transform: lowercase;">
+                                                    <input type="text" name="password" id="password" placeholder="password" class="form-in" required>
+
+                                                </div>
                                                 <div class="multiple-row">
-                                                    <input type="text" name="Address" id="Address" placeholder="Address" class="form-in" required>
+
                                                     <input type="file" name="image" id="image" placeholder="pucture" class="form-in" required>
 
                                                     <center><button class="button" type="submit" name="submit">Publish

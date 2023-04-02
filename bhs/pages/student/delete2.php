@@ -6,7 +6,7 @@ include '../../../config/database.php';
 $id = $_GET['id'];
 
 // Delete the item from the database
-$sql = "DELETE FROM student_info WHERE id=$id";
+$sql = "DELETE FROM student_info2 WHERE id=$id";
 mysqli_query($conn, $sql);
 
 header("Location: ./index.php");

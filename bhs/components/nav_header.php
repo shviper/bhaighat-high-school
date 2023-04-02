@@ -6,7 +6,7 @@
          </svg>
 
          <p class="brand-title" width="124px" height="33px" style="font-size: 30px">
-             SMS
+             BHS
          </p>
      </a>
      <div class="nav-control">
